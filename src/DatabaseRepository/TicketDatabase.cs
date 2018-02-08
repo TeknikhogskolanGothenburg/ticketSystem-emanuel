@@ -43,14 +43,14 @@ namespace TicketSystem.DatabaseRepository
             }
         }
 
-            public List<ClassLibrary.SuperClass> TicketGet()
+            public List<ClassLibrary.SuperClass> TicketPost()
             {
 
                   string connectionString = ConfigurationManager.ConnectionStrings["TicketSystem"].ConnectionString;
                   using (var connection = new SqlConnection(connectionString))
                   {
                       connection.Open();
-                      return connection.Query<Venue>("SELECT * FROM Venues WHERE VenueName like '%" + query + "%' OR Address like '%" + query + "%' OR City like '%" + query + "%' OR Country like '%" + query + "%'").ToList();
+                      return connection.Query<Venue>("SELECT * FROM Venues WHERE VenueName like '%" + "%' OR Address like '%"  + "%' OR City like '%" + query + "%' OR Country like '%" + query + "%'").ToList();
                        //Skriv egen query
                     }
 

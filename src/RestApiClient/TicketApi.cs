@@ -8,10 +8,10 @@ namespace TicketSystem.RestApiClient
     {
         // Implemented using RestSharp: http://restsharp.org/
 
-        public List<ClassLibrary.SuperClass> TicketGet()
+        public List<ClassLibrary.SuperClass> TicketPost()
         {
             var client = new RestClient("http://localhost:18001/");
-            var request = new RestRequest("ticket", Method.GET);
+            var request = new RestRequest("ticket", Method.POST);
 
             // result : GET http://localhst:18001/ticket
             var response = client.Execute<List<ClassLibrary.SuperClass>>(request);
