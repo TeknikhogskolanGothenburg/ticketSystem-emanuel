@@ -6,10 +6,17 @@ namespace ClassLibrary
     {
 
     }
+    class Product
+    {
+
+    }
     class Order
     {
 
     }
-    class Newclass { }
+    class Newclass
+    {
+
+    }
         
 }

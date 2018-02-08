@@ -19,7 +19,7 @@ namespace Admin.Controllers
                 return View(); // return error promt 
             }
             TicketApi ticketApi = new TicketApi();
-            //ticketApi.TicketGet();
+            ticketApi.TicketPost();
             return View(); // return promt "Prod added"
         }
                  
