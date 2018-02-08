@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using TicketSystem.RestApiClient.Model;
 
 namespace TicketSystem.RestApiClient
 {
@@ -9,13 +8,13 @@ namespace TicketSystem.RestApiClient
         /// Get all tickets in the system 
         /// </summary>
         /// <returns></returns>
-        List<Ticket> TicketGet();
+        List<ClassLibrary.SuperClass> TicketGet();
 
         /// <summary>
         /// Get a ticket by ID from the system Returns a single ticket
         /// </summary>
         /// <param name="ticketId">ID of the ticket</param>
         /// <returns></returns>
-        Ticket TicketTicketIdGet(int ticketId);
+        ClassLibrary.SuperClass TicketTicketIdGet(int ticketId);
     }
 }

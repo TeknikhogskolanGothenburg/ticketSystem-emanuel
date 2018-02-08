@@ -1,7 +1,6 @@
 ﻿using RestSharp;
 using System;
 using System.Collections.Generic;
-using TicketSystem.RestApiClient.Model;
 
 namespace TicketSystem.RestApiClient
 {
@@ -9,20 +8,22 @@ namespace TicketSystem.RestApiClient
     {
         // Implemented using RestSharp: http://restsharp.org/
 
-        public List<Ticket> TicketGet()
+        public List<ClassLibrary.SuperClass> TicketGet()
         {
             var client = new RestClient("http://localhost:18001/");
             var request = new RestRequest("ticket", Method.GET);
-            var response = client.Execute<List<Ticket>>(request);
+
+            // result : GET http://localhst:18001/ticket
+            var response = client.Execute<List<ClassLibrary.SuperClass>>(request);
             return response.Data;
         }
 
-        public Ticket TicketTicketIdGet(int ticketId)
+        public ClassLibrary.SuperClass TicketTicketIdGet(int ticketId)
         {
             var client = new RestClient("http://localhost:18001/");
             var request = new RestRequest("ticket/{id}", Method.GET);
             request.AddUrlSegment("id", ticketId);
-            var response = client.Execute<Ticket>(request);
+            var response = client.Execute<ClassLibrary.SuperClass>(request);
 
             if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
             {

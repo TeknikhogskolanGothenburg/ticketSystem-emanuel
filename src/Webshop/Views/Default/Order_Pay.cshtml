@@ -1,0 +1,81 @@
+﻿@{
+    ViewBag.Title="Oder and pay";
+}
+
+
+    <h1>Enter your info</h1>
+@using (Html.BeginForm("Thanks", "Default"))
+{
+
+    <fieldset>
+
+        <legend>Name and adress</legend>
+
+        <label for="fname">First Name:</label> <br />
+        <input type="text" id="fname" name="fname"> <br /><br />
+
+        <label for="lname">Last Name:</label><br />
+        <input type="text" id="fname" name="lname"> <br /><br />
+
+        <label for="adress">Adress:</label><br />
+        <input type="text" id="adress" name="adress"> <br /><br />
+        
+        <label for="zipCode">Zip-Code</label><br />
+        <input type="number" id="zip-code" name="zipCode"> <br /><br />
+
+        <label for="city">City:</label><br />
+        <input type="text" id="zip-code" name="city"> <br /><br />
+
+        <label for="mail">Email:</label><br />
+        <input type="email" id="mail" name="mail"><br /><br />
+
+
+        <label for="b2b" class="light">Company: </label> <input type="checkbox" id="b2b" value="true" name="b2b">
+        <input type="hidden" value="false" name="b2b">
+
+    </fieldset>
+
+    <fieldset>
+
+        <legend>Shiping detail</legend>
+       
+        <label for="DeliveryDate">DeliveryDate:</label>
+        <select id="DeliveryDate" name="DeliveryDate">
+            
+                <option value="1">1Days from now </option>
+                <option value="2">2Days from now </option>
+                <option value="3">3Days from now </option>
+                <option value="4">4Days from now </option>
+                <option value="5">5Days from now </option>
+                <option value="6">6Days from now </option>
+            
+        </select> <br />
+       
+
+        <label>DeliveryTime:</label><br />
+        <input type="radio" id="moring" value="moring" name="moringdel"><label for="moringdel">Moring</label><br>
+        <input type="radio" id="afternoon" value="afternoon" name="afternoondel"><label for="afternoondel">Afternoon</label><br />
+        <input type="radio" id="evning" value="evning" name="evning"><label for="evningdel">Evning</label><br /><br />
+
+        <label for="commentOnDelivery">Extra comment on delivery</label> <br />
+        <textarea id="commentOnDelivery" name="commentOnDelivery"></textarea> <br /><br />
+
+        <label>Card Info</label><br />
+
+        <label for="cardnumber">CardNumber</label>
+        <input type="text" id="cardnumber" name="cardnumber"/>
+
+        <label for="date">Date</label>
+        <input type="month" id="month" value="month" name="date" />
+
+        <label for="CVC">CVC</label>
+        <input  type="text" id="CVC"  name="CVC"/>
+   
+
+    </fieldset>
+
+    <button type="submit">Pay</button>
+
+    }
+
+
