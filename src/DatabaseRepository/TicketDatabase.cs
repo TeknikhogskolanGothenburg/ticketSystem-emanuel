@@ -43,18 +43,18 @@ namespace TicketSystem.DatabaseRepository
             }
         }
 
-            public List<ClassLibrary.SuperClass> TicketPost()
-            {
+            //public List<ClassLibrary.SuperClass> TicketPost()
+            //{
 
-                  string connectionString = ConfigurationManager.ConnectionStrings["TicketSystem"].ConnectionString;
-                  using (var connection = new SqlConnection(connectionString))
-                  {
-                      connection.Open();
-                      return connection.Query<Venue>("SELECT * FROM Venues WHERE VenueName like '%" + "%' OR Address like '%"  + "%' OR City like '%" + query + "%' OR Country like '%" + query + "%'").ToList();
-                       //Skriv egen query
-                    }
+            //      //string connectionString = ConfigurationManager.ConnectionStrings["TicketSystem"].ConnectionString;
+            //      //using (var connection = new SqlConnection(connectionString))
+            //      //{
+            //      //    connection.Open();
+            //      //    return connection.Query<Venue>("SELECT * FROM Venues WHERE VenueName like '%" + "%' OR Address like '%"  + "%' OR City like '%" + "%' OR Country like '%" +  + "%'").ToList();
+            //      //     //Skriv egen query
+            //      //  }
 
-            }
+            //}
 
         }
     }
