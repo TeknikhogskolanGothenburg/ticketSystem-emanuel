@@ -8,7 +8,11 @@ namespace DbStartUp
 
         static void Main(string[] args)
         {
-             TicketDatabase db = new TicketDatabase();
+            TicketDatabase db = new TicketDatabase();
+
+
+            db.GetAllProd();
+            Console.ReadKey();
             Console.WriteLine("Hello World!");
             Console.WriteLine("Enter values of chose");
             bool statement = true; 
