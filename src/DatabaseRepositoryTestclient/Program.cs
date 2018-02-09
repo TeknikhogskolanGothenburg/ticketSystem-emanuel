@@ -26,36 +26,36 @@ namespace TicketSystem.DatabaseRepositoryTestclient
             //}
             //Console.WriteLine("Done!");
 
-            WebshopDatabase db = new WebshopDatabase();
-            Console.WriteLine("Hello World!");
-            Console.WriteLine("Enter values of chose");
-            bool statement = true;
-            while (statement)
-            {
-                Console.Write("Please insert Value Id: ");
-                int id = int.Parse(Console.ReadLine());
+        //    WebshopDatabase db = new WebshopDatabase();
+        //    Console.WriteLine("Hello World!");
+        //    Console.WriteLine("Enter values of chose");
+        //    bool statement = true;
+        //    while (statement)
+        //    {
+        //        Console.Write("Please insert Value Id: ");
+        //        int id = int.Parse(Console.ReadLine());
 
-                Console.Write("Please insert Value CatagoryId: ");
-                int catId = int.Parse(Console.ReadLine());
+        //        Console.Write("Please insert Value CatagoryId: ");
+        //        int catId = int.Parse(Console.ReadLine());
 
-                Console.Write("Please insert Value Description: ");
-                string des = Console.ReadLine();
-
-
-                Console.Write("Please insert Value Price: ");
-                int price = int.Parse(Console.ReadLine());
+        //        Console.Write("Please insert Value Description: ");
+        //        string des = Console.ReadLine();
 
 
-                Console.Write("Please insert Value ImgFilename: ");
-                string imgFilename = Console.ReadLine();
+        //        Console.Write("Please insert Value Price: ");
+        //        int price = int.Parse(Console.ReadLine());
+
+
+        //        Console.Write("Please insert Value ImgFilename: ");
+        //        string imgFilename = Console.ReadLine();
 
 
 
-                db.AddProdToBd(new ClassLibrary.Product { Id = id, CategoryId = catId, Description = des, Price = price, ImgFileName = imgFilename });
+        //        db.AddProdToBd(new ClassLibrary.Product { Id = id, CategoryId = catId, Description = des, Price = price, ImgFileName = imgFilename });
 
 
-            }
-            Console.ReadKey();
-        }
+        //    }
+        //    Console.ReadKey();
+        //}
     }
 }
