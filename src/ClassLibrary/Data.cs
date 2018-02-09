@@ -8,7 +8,7 @@ namespace ClassLibrary
     }
     public class Product
     {
-       public int id;
+       public int Id;
        public int CategoryId;
        public string Name;
        public string Description;

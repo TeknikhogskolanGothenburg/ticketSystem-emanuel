@@ -8,9 +8,9 @@ using System.Collections.ObjectModel;
 
 namespace TicketSystem.DatabaseRepository
 {
-    public class TicketDatabase
+    public class WebshopDatabase
     {
-        private string connectionString = @"Data Source = emanuelservertest.database.windows.net; Initial Catalog = Webshop; Integrated Security = False; User ID = Emanuelsserver; Password=********;Connect Timeout = 60; Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+        private string connectionString = @"Data Source = emanuelservertest.database.windows.net; Initial Catalog = Webshop; Integrated Security = False; User ID = Emanuelsserver; Password=key123EJ;Connect Timeout = 60; Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 
 
         public ClassLibrary.Product AddProdToBd(ClassLibrary.Product product)
@@ -18,17 +18,18 @@ namespace TicketSystem.DatabaseRepository
             using (var connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-                connection.Query("insert into Table([Id],[CatagoryId],[Description],[Price],[ImgName],[ImgPath]) " +
+                connection.Query("insert into Product([Id],[CatagoryId],[Description],[Price],[ImgName],[ImgPath]) " +
                     "values(@Id,@CatagoryId, @Description, @Price, @ImgName, @ImgPath)", 
-                    new { Id = product.id, CatagoryId=product.id, Description=product.Description, Price = product.Price, ImgName=product.ImgFileName, ImgPath=product.ImgFilePath });
-                var addedVenueQuery = connection.Query<int>("SELECT IDENT_CURRENT ('Table') AS Current_Identity").First();
-                return connection.Query<ClassLibrary.Product>("SELECT * FROM Table WHERE Id=@Id", new { Id = addedVenueQuery }).First();
+                    new { Id = product.Id, CatagoryId=product.CategoryId, Description=product.Description, Price = product.Price, ImgName=product.ImgFileName, ImgPath=product.ImgFilePath });
+                //var addedVenueQuery = connection.Query<int>("SELECT IDENT_CURRENT ('Product') AS Current_Identity").First();
+                //return connection.Query<ClassLibrary.Product>("SELECT * FROM Product WHERE Id=@Id", new { Id = addedVenueQuery }).First();
+                return product;
             }
         }
 
 
 
-
+        
 
 
 
