@@ -1,18 +1,97 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
+using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
-using System.Threading.Tasks;
+using Dapper;
+using TicketSystem.DatabaseRepository.Model;
+using System.Collections.ObjectModel;
 
-namespace DatabaseRepo
+namespace TicketSystem.DatabaseRepository
 {
-    class WebshopDatabase : IWebshopDatabase
+    public class TicketDatabase
     {
+        private string connectionString = @"Data Source = emanuelservertest.database.windows.net; Initial Catalog = Webshop; Integrated Security = False; User ID = Emanuelsserver; Password=********;Connect Timeout = 60; Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 
+
+        public ClassLibrary.Product AddProdToBd(ClassLibrary.Product product)
+        {
+            using (var connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                connection.Query("insert into Table([Id],[CatagoryId],[Description],[Price],[ImgName],[ImgPath]) " +
+                    "values(@Id,@CatagoryId, @Description, @Price, @ImgName, @ImgPath)", 
+                    new { Id = product.id, CatagoryId=product.id, Description=product.Description, Price = product.Price, ImgName=product.ImgFileName, ImgPath=product.ImgFilePath });
+                var addedVenueQuery = connection.Query<int>("SELECT IDENT_CURRENT ('Table') AS Current_Identity").First();
+                return connection.Query<ClassLibrary.Product>("SELECT * FROM Table WHERE Id=@Id", new { Id = addedVenueQuery }).First();
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        //public TicketEvent EventAdd(string name, string description)
+        //{
+        //    string connectionString = ConfigurationManager.ConnectionStrings["TicketSystem"].ConnectionString;
+        //    using (var connection = new SqlConnection(connectionString))
+        //    {
+        //        connection.Open();
+        //        connection.Query("insert into TicketEvents(EventName, EventHtmlDescription) values(@Name, @Description)", new { Name = name, Description = description });
+        //        var addedEventQuery = connection.Query<int>("SELECT IDENT_CURRENT ('TicketEvents') AS Current_Identity").First();
+        //        return connection.Query<TicketEvent>("SELECT * FROM TicketEvents WHERE TicketEventID=@Id", new { Id = addedEventQuery }).First();
+        //    }
+        //}
+
+        //public Venue VenueAdd(string name, string address, string city, string country)
+        //{
+        //    string connectionString = ConfigurationManager.ConnectionStrings["TicketSystem"].ConnectionString;
+        //    using (var connection = new SqlConnection(connectionString))
+        //    {
+        //        connection.Open();
+        //        connection.Query("insert into Venues([VenueName],[Address],[City],[Country]) values(@Name,@Address, @City, @Country)", new { Name = name, Address= address, City = city, Country = country });
+        //        var addedVenueQuery = connection.Query<int>("SELECT IDENT_CURRENT ('Venues') AS Current_Identity").First();
+        //        return connection.Query<Venue>("SELECT * FROM Venues WHERE VenueID=@Id", new { Id = addedVenueQuery }).First();
+        //    }
+        //}
+
+        //public List<Venue> VenuesFind(string query)
+        //{
+        //    string connectionString = ConfigurationManager.ConnectionStrings["TicketSystem"].ConnectionString;
+        //    using (var connection = new SqlConnection(connectionString))
+        //    {
+        //        connection.Open();
+        //        return connection.Query<Venue>("SELECT * FROM Venues WHERE VenueName like '%"+query+ "%' OR Address like '%" + query + "%' OR City like '%" + query + "%' OR Country like '%" + query + "%'").ToList();
+        //    }
+        //}
+
+        //    //public List<ClassLibrary.SuperClass> TicketPost()
+        //    //{
+
+        //    //      //string connectionString = ConfigurationManager.ConnectionStrings["TicketSystem"].ConnectionString;
+        //    //      //using (var connection = new SqlConnection(connectionString))
+        //    //      //{
+        //    //      //    connection.Open();
+        //    //      //    return connection.Query<Venue>("SELECT * FROM Venues WHERE VenueName like '%" + "%' OR Address like '%"  + "%' OR City like '%" + "%' OR Country like '%" +  + "%'").ToList();
+        //    //      //     //Skriv egen query
+        //    //      //  }
+
+        //    //}
 
     }
 }
+
+
 
 
 //using System;
