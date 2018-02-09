@@ -23,7 +23,7 @@ namespace TicketSystem.DatabaseRepository
                     "values(@Id,@CatagoryId, @Description, @Price, @ImgName, @ImgPath)", 
                     new { Id = product.Id, CatagoryId=product.CategoryId, Description=product.Description, Price = product.Price, ImgName=product.ImgFileName, ImgPath=product.ImgFilePath });
                 var addedVenueQuery = connection.Query<int>("SELECT IDENT_CURRENT ('Product') AS Current_Identity").First();
-                return connection.Query<ClassLibrary.Product>("SELECT * FROM Product WHERE Id=@Id", new { Id = addedVenueQuery }).First();
+                return connection.Query<ClassLibrary.Product>("SELECT * FROM Product WHERE Id=@Id", new { Id = addedVenueQuery }).First(); 
             }
         }
 
