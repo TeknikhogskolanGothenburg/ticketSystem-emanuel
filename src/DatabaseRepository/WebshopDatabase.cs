@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Configuration;
-using System.Data.SqlClient;
 using System.Linq;
 using Dapper;
+using System.Data.SqlClient;
 using TicketSystem.DatabaseRepository.Model;
 using System.Collections.ObjectModel;
 
@@ -11,7 +11,7 @@ namespace TicketSystem.DatabaseRepository
     public class TicketDatabase
     {
         private static string connectionString 
-            = @"Data Source = emanuelservertest.database.windows.net; Initial Catalog = Webshop; Integrated Security = False; User ID = Emanuelsserver; Password=lolnejhahaha;Connect Timeout = 60; Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+            = @"Data Source = emanuelservertest.database.windows.net; Initial Catalog = Webshop; Integrated Security = False; User ID = Emanuelsserver; Password=password;Connect Timeout = 60; Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 
 
         public ClassLibrary.Product AddProdToBd(ClassLibrary.Product product)
@@ -19,11 +19,12 @@ namespace TicketSystem.DatabaseRepository
             using (var connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-                connection.Query("insert into Product([Id],[CatagoryId],[Description],[Price],[ImgName],[ImgPath]) " +
-                    "values(@Id,@CatagoryId, @Description, @Price, @ImgName, @ImgPath)", 
-                    new { Id = product.Id, CatagoryId=product.CategoryId, Description=product.Description, Price = product.Price, ImgName=product.ImgFileName, ImgPath=product.ImgFilePath });
-                var addedVenueQuery = connection.Query<int>("SELECT IDENT_CURRENT ('Product') AS Current_Identity").First();
-                return connection.Query<ClassLibrary.Product>("SELECT * FROM Product WHERE Id=@Id", new { Id = addedVenueQuery }).First(); 
+                connection.Query("insert into Product([Id],[CatagoryId],[Name],[Description],[Price],[ImgName],[ImgPath]) " +
+                    "values(@Id,@CatagoryId, @Name, @Description, @Price, @ImgName, @ImgPath)", 
+                    new { Id = product.Id, CatagoryId=product.CategoryId, Description=product.Description, Name=product.Name, Price = product.Price, ImgName=product.ImgFileName, ImgPath=product.ImgFilePath });
+                return product;
+                //var addedVenueQuery = connection.Query<int>("SELECT IDENT_CURRENT ('Product') AS Current_Identity").First();
+                //return connection.Query<ClassLibrary.Product>("SELECT * FROM Product WHERE Id=@Id", new { Id = addedVenueQuery }).First(); 
             }
         }
 
