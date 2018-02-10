@@ -9,10 +9,8 @@ namespace Webshop.Models
     {       
         public List<Product> product = new List<Product>();
 
-        public void DoSomething()
-        {
-            Console.WriteLine("lal");
-        }
+       
+      
         
     }
 }

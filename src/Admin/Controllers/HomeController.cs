@@ -21,8 +21,8 @@ namespace Admin.Controllers
             {
                 return View(); // return error promt 
             }
-   
-            db.AddProdToBd(new ClassLibrary.Product {Id=25,CategoryId=int.Parse(CatagoryId), Description= Description, Name=ProdName, Price=Price, ImgFileName=imgName });
+            
+           ClassLibrary.Product product = db.AddProdToBd(new ClassLibrary.Product {Id=25,CategoryId=int.Parse(CatagoryId), Description= Description, Name=ProdName, Price=Price, ImgFileName=imgName });
             return View(); // return promt "Prod added"
         }
                  
