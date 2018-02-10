@@ -9,32 +9,32 @@
 
 @using (Html.BeginForm("AddProd","Home"))
 {
-    <fieldset>
-        <legend>A prodct id will be generated </legend> <br />
-        <lable for="CatagoryId">CatagoryId</lable>
-        <select id="CatagoryId" name="CatagoryId">
-            <option value="Category1">Category: 1 </option>
-            <option value="Category2">Category: 2 </option>
-            <option value="Category3">Category: 3 </option>
-            <option value="Category4">Category: 4 </option>
-            <option value="Category5">Category: 5 </option>            
-        </select> <br /><br />
+<fieldset>
+    <legend>A prodct id will be generated </legend> <br />
+    <lable for="CatagoryId">CatagoryId</lable>
+    <select id="CatagoryId" name="CatagoryId">
+        <option value="1">Category: 1 </option>
+        <option value="2">Category: 2 </option>
+        <option value="3">Category: 3 </option>
+        <option value="4">Category: 4 </option>
+        <option value="5">Category: 5 </option>
+    </select> <br /><br />
 
-        <label for="ProdName">Product Name</label><br />
-        <input type="text" id="ProdName" name="ProdName"> <br /> <br />
+    <label for="ProdName">Product Name</label><br />
+    <input type="text" id="ProdName" name="ProdName"> <br /> <br />
 
-        <label for="Description">Description</label><br />
-        <input type="text" id="Description" name="Description"> <br /><br />
+    <label for="Description">Description</label><br />
+    <input type="text" id="Description" name="Description"> <br /><br />
 
-        <label for="Price">Price</label><br />
-        <input type="text" id="Price" name="Price"> <br /><br />
+    <label for="Price">Price</label><br />
+    <input type="text" id="Price" name="Price"> <br /><br />
 
-        <label for="imgName">Imgage File Name</label><br />
-        <input type="text" id="imgName" name="imgName"> <br /><br />
+    <label for="imgName">Imgage File Name</label><br />
+    <input type="text" id="imgName" name="imgName"> <br /><br />
 
-        <input type="hidden" name="IsAddProd" value="true"/>
-        <button type="submit">Add Product</button>
-    </fieldset>
+    <input type="hidden" name="IsAddProd" value="true" />
+    <button type="submit">Add Product</button>
+</fieldset>
     
 }
 

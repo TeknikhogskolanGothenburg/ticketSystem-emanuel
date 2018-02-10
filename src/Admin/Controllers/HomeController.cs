@@ -6,20 +6,23 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Admin.Models;
 using TicketSystem.RestApiClient;
+using TicketSystem.DatabaseRepository;
 
 namespace Admin.Controllers
 {
+
     public class HomeController : Controller
     {
+        TicketDatabase db = new TicketDatabase();
         // använd rest API
-        public IActionResult AddProd(string CatagoryId, string Description, int? Price, string imgName, bool IsAddProd)
+        public IActionResult AddProd(string ProdName, string CatagoryId, string Description, int Price, string imgName, bool IsAddProd)
         {
-            if (CatagoryId == null || Description == null || Price == null|| imgName == null && IsAddProd == true)
+            if (CatagoryId == null || Description == null || Price == 1|| imgName == null && IsAddProd == true)
             {
                 return View(); // return error promt 
             }
-            TicketApi ticketApi = new TicketApi();
-            ticketApi.TicketPost();
+   
+            db.AddProdToBd(new ClassLibrary.Product {Id=25,CategoryId=int.Parse(CatagoryId), Description= Description, Name=ProdName, Price=Price, ImgFileName=imgName });
             return View(); // return promt "Prod added"
         }
                  
