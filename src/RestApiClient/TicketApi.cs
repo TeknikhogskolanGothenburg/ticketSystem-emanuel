@@ -13,7 +13,7 @@ namespace TicketSystem.RestApiClient
             var client = new RestClient("http://localhost:60949/");
             var request = new RestRequest("ticket", Method.POST);
 
-            // result : GET http://localhst:60949/ticket
+            // result : GET http://localhst:60949/
             var response = client.Execute<List<ClassLibrary.SuperClass>>(request);
             return response.Data;
         }

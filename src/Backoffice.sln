@@ -1,15 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27130.2010
+VisualStudioVersion = 15.0.27004.2009
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RestApiClient", "RestApiClient\RestApiClient.csproj", "{89F216FB-2EC3-4635-83C4-15386501FC7C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClassLibrary", "ClassLibrary\ClassLibrary.csproj", "{B30BA175-5027-40AD-8A79-1D9199704DD3}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Admin", "Admin\Admin.csproj", "{DDBD1FBE-4020-4A27-8BAC-75F6B1D19716}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DatabaseRepository", "DatabaseRepository\DatabaseRepository.csproj", "{F50A25C7-F2CA-4E3E-B88A-C1F6A4E966EC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +27,6 @@ Global
 		{DDBD1FBE-4020-4A27-8BAC-75F6B1D19716}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DDBD1FBE-4020-4A27-8BAC-75F6B1D19716}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DDBD1FBE-4020-4A27-8BAC-75F6B1D19716}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F50A25C7-F2CA-4E3E-B88A-C1F6A4E966EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F50A25C7-F2CA-4E3E-B88A-C1F6A4E966EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F50A25C7-F2CA-4E3E-B88A-C1F6A4E966EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F50A25C7-F2CA-4E3E-B88A-C1F6A4E966EC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
