@@ -1,10 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace ClassLibrary
 {
     public class SuperClass
     {
-
+        public List<Product> productList = new List<Product>();
     }
     public class Product
     {

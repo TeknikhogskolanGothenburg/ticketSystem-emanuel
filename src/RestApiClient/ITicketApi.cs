@@ -8,7 +8,7 @@ namespace TicketSystem.RestApiClient
         /// Get all tickets in the system 
         /// </summary>
         /// <returns></returns>
-        List<ClassLibrary.SuperClass> TicketPost();
+        List<ClassLibrary.SuperClass> Get();
 
         /// <summary>
         /// Get a ticket by ID from the system Returns a single ticket
