@@ -11,7 +11,7 @@ namespace TicketSystem.RestApiClient
 
         public List<ClassLibrary.Product> GetProduct()
         {
-            var client = new RestClient("http://localhost:50497/"); 
+            var client = new RestClient("http://localhost:50497/");
             var request = new RestRequest("api/values", Method.GET);
            
             var response = client.Execute<List<ClassLibrary.Product>>(request);

@@ -30,7 +30,8 @@
         <input type="email" id="mail" name="mail"><br /><br />
 
 
-        
+        <label for="b2b" class="light">Company: </label> <input type="checkbox" id="b2b" value="true" name="b2b">
+        <input type="hidden" value="false" name="b2b">
 
     </fieldset>
 
@@ -51,7 +52,11 @@
         </select> <br />
        
 
-        
+        <label>DeliveryTime:</label><br />
+        <input type="radio" id="moring" value="moring" name="moringdel"><label for="moringdel">Moring</label><br>
+        <input type="radio" id="afternoon" value="afternoon" name="afternoondel"><label for="afternoondel">Afternoon</label><br />
+        <input type="radio" id="evning" value="evning" name="evning"><label for="evningdel">Evning</label><br /><br />
+
         <label for="commentOnDelivery">Extra comment on delivery</label> <br />
         <textarea id="commentOnDelivery" name="commentOnDelivery"></textarea> <br /><br />
 
