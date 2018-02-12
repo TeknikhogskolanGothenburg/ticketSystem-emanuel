@@ -14,7 +14,7 @@ namespace Webshop.Controllers
         public IActionResult Category(int? Amount, string Id)
         {
             List<ClassLibrary.Product> prodList = new List<ClassLibrary.Product>(); 
-            prodList = db.GetProductsByCatId(Id);
+            prodList = db.GetProductsByCatId(Id); 
             db.GetProduct();
             return View(prodList);
 
