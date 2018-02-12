@@ -8,21 +8,21 @@ namespace TicketSystem.RestApiClient
     {
         // Implemented using RestSharp: http://restsharp.org/
 
-        public List<ClassLibrary.SuperClass> Get()
+        public List<ClassLibrary.Product> Get()
         {
             var client = new RestClient("localhost:53936/");
             var request = new RestRequest("api/values", Method.GET);
            
-            var response = client.Execute<List<ClassLibrary.SuperClass>>(request);
+            var response = client.Execute<List<ClassLibrary.Product>>(request);
             return response.Data;
         }
 
-        public ClassLibrary.SuperClass TicketTicketIdGet(int ticketId)
+        public ClassLibrary.Product TicketTicketIdGet(int ticketId)
         {
             var client = new RestClient("http://localhost:53936");
             var request = new RestRequest("ticket/{id}", Method.GET);
             request.AddUrlSegment("id", ticketId);
-            var response = client.Execute<ClassLibrary.SuperClass>(request);
+            var response = client.Execute<ClassLibrary.Product>(request);
 
             if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
             {
