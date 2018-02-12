@@ -11,7 +11,7 @@ namespace TicketSystem.DatabaseRepository
     public class TicketDatabase
     {
         private static string connectionString 
-            = @"Data Source = emanuelservertest.database.windows.net; Initial Catalog = Webshop; Integrated Security = False; User ID = Emanuelsserver; Password=HackNo123;Connect Timeout = 60; Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+            = @"Data Source = emanuelservertest.database.windows.net; Initial Catalog = Webshop; Integrated Security = False; User ID = Emanuelsserver;         Password=HackNo123;Connect Timeout = 60; Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 
 
         public ClassLibrary.Product AddProdToBd(ClassLibrary.Product product)
