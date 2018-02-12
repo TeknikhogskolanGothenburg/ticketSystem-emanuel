@@ -18,7 +18,7 @@ namespace TicketSystem.RestApiClient
             List<ClassLibrary.Product> test = response.Data;
             return test;
         }
-
+         
         public List<ClassLibrary.Product> GetProductsByCatId(string ticketId)
         {
             var client = new RestClient("http://localhost:50497/");
