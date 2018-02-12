@@ -1,15 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27130.2010
+VisualStudioVersion = 15.0.27004.2009
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RestApiClient", "RestApiClient\RestApiClient.csproj", "{5480771D-2461-443E-AF88-B81C9EDA5C2E}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebShop", "WebShop\WebShop.csproj", "{D404A3C8-D69F-47D1-9A8A-91327B462F7D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClassLibrary", "ClassLibrary\ClassLibrary.csproj", "{580ADD8B-6242-406C-9902-6C67B4DA93DA}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DatabaseRepository", "DatabaseRepository\DatabaseRepository.csproj", "{ADB495FE-8A90-44FA-B19C-43150D353371}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +27,6 @@ Global
 		{580ADD8B-6242-406C-9902-6C67B4DA93DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{580ADD8B-6242-406C-9902-6C67B4DA93DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{580ADD8B-6242-406C-9902-6C67B4DA93DA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{ADB495FE-8A90-44FA-B19C-43150D353371}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{ADB495FE-8A90-44FA-B19C-43150D353371}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{ADB495FE-8A90-44FA-B19C-43150D353371}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{ADB495FE-8A90-44FA-B19C-43150D353371}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,4 +1,4 @@
-﻿@model Webshop.Models.ProdList
+﻿@model List<ClassLibrary.Product>
 
 @{
     ViewBag.Title = "Hej";
@@ -7,28 +7,29 @@
 
 <div class="product-container">
     
-    @foreach (var product in Model.product)
+    @foreach (var product in Model)
     {
-    <div class="col">
-        <div class="Prod_Img" style=" background-image: url(@product.PicturePath);">
+        <div class="col">
+            <div class="Prod_Img" style=" background-image: url(@product.ImgFilePath);">
+            </div>
+            <div class="Prod_des">
+                <p>
+                    @product.Price
+                    @product.Description
+                </p>
+            </div>
+
+            <div class="Prod_form">
+                @using (Html.BeginForm("AddProduct", "Products"))
+                {
+                    <label>Amount</label>
+                    <input type="hidden" name="ProdId" value="@product.Id" />
+                    <input type="hidden" name="url" value="@Url.RouteUrl(ViewContext.RouteData.Values)"/>
+                    <input type="number" name="Amount" style="width:60px;" />
+                    <input type="submit" value="Add" style="width:50px;" />
+                }
+            </div>
         </div>
-        <div class="Prod_des">
-            <p>
-                @product.Price
-                @product.Description
-            </p>
-        </div>
-        <div class="Prod_form">
-            @using (Html.BeginForm("Order_Pay", "Default"))
-        {
-            <label>Amount</label>
-            <input type="hidden" name="ProdId" value="@product.Id" />
-            <input type="hidden" name="url" value="@Url.RouteUrl(ViewContext.RouteData.Values)" />
-            <input type="number" name="Amount" style="width:60px;" />
-            <input type="submit" value="Book" style="width:50px;" />
-    }
-        </div>
-    </div>
 
     }
 

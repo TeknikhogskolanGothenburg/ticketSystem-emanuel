@@ -18,7 +18,7 @@ namespace Admin.Controllers
         {
             TicketApi api = new TicketApi();
 
-            api.Get();
+            
             if (CatagoryId == null || Description == null || Price == 1|| imgName == null && IsAddProd == true)
             {
                 return View(); // return error promt 

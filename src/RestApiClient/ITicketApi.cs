@@ -8,13 +8,13 @@ namespace TicketSystem.RestApiClient
         /// Get all tickets in the system 
         /// </summary>
         /// <returns></returns>
-        List<ClassLibrary.Product> Get();
+        List<ClassLibrary.Product> GetProduct();
 
         /// <summary>
         /// Get a ticket by ID from the system Returns a single ticket
         /// </summary>
         /// <param name="ticketId">ID of the ticket</param>
         /// <returns></returns>
-        ClassLibrary.Product TicketTicketIdGet(int ticketId);
+        List<ClassLibrary.Product> GetProductsByCatId(string ticketId);
     }
 }
