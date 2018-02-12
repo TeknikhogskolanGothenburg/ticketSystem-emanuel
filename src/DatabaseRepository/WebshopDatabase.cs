@@ -21,7 +21,7 @@ namespace TicketSystem.DatabaseRepository
                 connection.Open();
                 connection.Query("insert into Product([Id],[CatagoryId],[Name],[Description],[Price],[ImgName],[ImgPath]) " +
                     "values(@Id,@CatagoryId, @Name, @Description, @Price, @ImgName, @ImgPath)", 
-                    new { Id = product.Id, CatagoryId=product.CategoryId, Description=product.Description, Name=product.Name, Price = product.Price, ImgName=product.ImgFileName, ImgPath=product.ImgFilePath });
+                    new { Id = product.Id, CatagoryId = product.CatagoryId, Description=product.Description, Name=product.Name, Price = product.Price, ImgName=product.ImgName, ImgPath=product.ImgFilePath });
                 return product;
                 //var addedVenueQuery = connection.Query<int>("SELECT IDENT_CURRENT ('Product') AS Current_Identity").First();
                 //return connection.Query<ClassLibrary.Product>("SELECT * FROM Product WHERE Id=@Id", new { Id = addedVenueQuery }).First(); 
@@ -32,14 +32,30 @@ namespace TicketSystem.DatabaseRepository
         {
             string cdm = @"
              SELECT *
-             FROM Product";         
-                using (var connection = new SqlConnection(connectionString))
-                {
-                    connection.Open();
-                    List<ClassLibrary.Product> list = connection.Query<ClassLibrary.Product>(cdm).ToList();
+             FROM Product";
+            List<ClassLibrary.Product> list;
+            using (var connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                list = connection.Query<ClassLibrary.Product>(cdm).ToList();                
+            }
+            return list;
+        }
 
-                     return list; 
-                }
+        public List<ClassLibrary.Product> GetAllProd(string Id)
+        {
+            string cdm = @"
+             SELECT *
+             FROM Product where CatagoryId=" + Id;
+            List<ClassLibrary.Product> list;
+             using (var connection = new SqlConnection(connectionString))
+             {
+                connection.Open();
+                list = connection.Query<ClassLibrary.Product>(cdm).ToList();
+
+                
+             }
+             return list;
         }
 
 

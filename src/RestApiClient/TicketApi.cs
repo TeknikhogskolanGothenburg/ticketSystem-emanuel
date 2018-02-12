@@ -4,32 +4,40 @@ using System.Collections.Generic;
 
 namespace TicketSystem.RestApiClient
 {
+   
     public class TicketApi : ITicketApi
     {
         // Implemented using RestSharp: http://restsharp.org/
 
-        public List<ClassLibrary.SuperClass> Get()
+        public List<ClassLibrary.Product> GetProduct()
         {
-            var client = new RestClient("localhost:53936/");
+            var client = new RestClient("http://localhost:50497/");
             var request = new RestRequest("api/values", Method.GET);
            
-            var response = client.Execute<List<ClassLibrary.SuperClass>>(request);
-            return response.Data;
+            var response = client.Execute<List<ClassLibrary.Product>>(request);
+            List<ClassLibrary.Product> test = response.Data;
+            return test;
         }
 
-        public ClassLibrary.SuperClass TicketTicketIdGet(int ticketId)
+        public List<ClassLibrary.Product> GetProductsByCatId(string ticketId)
         {
-            var client = new RestClient("http://localhost:53936");
-            var request = new RestRequest("ticket/{id}", Method.GET);
+            var client = new RestClient("http://localhost:50497/");
+            var request = new RestRequest("api/values/{id}", Method.GET);
             request.AddUrlSegment("id", ticketId);
-            var response = client.Execute<ClassLibrary.SuperClass>(request);
+            IRestResponse<List<ClassLibrary.Product>> response = client.Execute<List<ClassLibrary.Product>>(request);
 
             if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
             {
                 throw new KeyNotFoundException(string.Format("Ticket with ID: {0} is not found", ticketId));
             }
-
             return response.Data;
+        }
+
+        public void PostProduct(ClassLibrary.Product product)
+        {
+
+
+
         }
     }
 }

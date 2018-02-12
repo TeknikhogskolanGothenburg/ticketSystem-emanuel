@@ -1,4 +1,4 @@
-﻿@model Webshop.Models.ProdList
+﻿@model List<ClassLibrary.Product>
 
 @{
     ViewBag.Title = "Hej";
@@ -7,10 +7,10 @@
 
 <div class="product-container">
     
-    @foreach (var product in Model.product)
+    @foreach (var product in Model)
     {
         <div class="col">
-            <div class="Prod_Img" style=" background-image: url(@product.PicturePath);">
+            <div class="Prod_Img" style=" background-image: url(@product.ImgFilePath);">
             </div>
             <div class="Prod_des">
                 <p>
