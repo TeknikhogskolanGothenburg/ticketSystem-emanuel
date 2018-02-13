@@ -2,7 +2,7 @@
 
 namespace TicketSystem.RestApiClient
 {
-    public interface ITicketApi
+    public interface IWebshopApi
     {
         /// <summary>
         /// Get all tickets in the system 

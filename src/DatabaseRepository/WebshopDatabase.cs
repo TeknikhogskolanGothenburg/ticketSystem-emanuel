@@ -33,13 +33,11 @@ namespace TicketSystem.DatabaseRepository
             string cdm = @"
              SELECT *
              FROM Product";
-            List<ClassLibrary.Product> list;
             using (var connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-                list = connection.Query<ClassLibrary.Product>(cdm).ToList();                
+                return connection.Query<ClassLibrary.Product>(cdm).ToList();                
             }
-            return list;
         }
 
         public List<ClassLibrary.Product> GetAllProd(string Id)
@@ -47,15 +45,13 @@ namespace TicketSystem.DatabaseRepository
             string cdm = @"
              SELECT *
              FROM Product where CatagoryId=" + Id;
-            List<ClassLibrary.Product> list;
              using (var connection = new SqlConnection(connectionString))
              {
                 connection.Open();
-                list = connection.Query<ClassLibrary.Product>(cdm).ToList();
-
+                return connection.Query<ClassLibrary.Product>(cdm).ToList();
                 
              }
-             return list;
+             
         }
 
 

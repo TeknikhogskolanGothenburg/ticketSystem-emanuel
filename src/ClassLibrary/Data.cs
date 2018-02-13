@@ -3,16 +3,16 @@ using System.Collections.Generic;
 
 namespace ClassLibrary
 {
-    public class HelpMethod
+    public class Person
     {
-  
-        public Product Json2Charp(string json)
-        {
-            //"id": 5,"catagoryId": 1, "name": "Nike1","description": "nike1", "price": 499, "imgName": "Nike1.jpg", "imgFilePath": "../../images/cat1/Nike1.jpg"
-
-            return null;
-        }
-    } 
+       public string FirstName { get; set; }
+       public string LastName { get; set; }
+       public string Adress { get; set; }
+       public string ZipCode { get; set; }
+       public string City { get; set; }
+       public string Email { get; set; }
+       public bool Company { get; set; }
+    }
     public class Product
     {
         public int Id { get; set; }
@@ -34,13 +34,23 @@ namespace ClassLibrary
     }
     public class Order
     {
-        public string fname;
-        public string lna
-
-    }
-    public class Newclass
-    {
-
-    }
         
+       public DateTime DeliveryDate { get; set; }
+       public string CommentOnDelivery { get; set; }
+               
+    }
+
+    public class Cart
+    {
+        public static List<CartItem> cart = new List<CartItem>();
+    }
+
+    public class CartItem
+    {
+        public int PrductId { get; set; }
+        public int Amount { get; set; }
+
+    }
 }
+        
+
