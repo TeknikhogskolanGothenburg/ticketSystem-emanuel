@@ -34,6 +34,8 @@ namespace ClassLibrary
     }
     public class Order
     {
+        public string fname;
+        public string lna
 
     }
     public class Newclass

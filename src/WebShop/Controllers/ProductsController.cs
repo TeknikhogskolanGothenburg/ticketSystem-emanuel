@@ -15,7 +15,6 @@ namespace Webshop.Controllers
         {
             List<ClassLibrary.Product> prodList = new List<ClassLibrary.Product>(); 
             prodList = db.GetProductsByCatId(Id);
-            db.GetProduct();
             return View(prodList);
 
         }

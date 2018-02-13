@@ -1,4 +1,5 @@
-﻿@{
+﻿@model Webshop.Models.Product
+@{
     ViewBag.Title="Oder and pay";
 }
 
@@ -8,7 +9,7 @@
 {
 
     <fieldset>
-
+        
         <legend>Name and adress</legend>
 
         <label for="fname">First Name:</label> <br />
@@ -21,7 +22,7 @@
         <input type="text" id="adress" name="adress"> <br /><br />
         
         <label for="zipCode">Zip-Code</label><br />
-        <input type="number" id="zip-code" name="zipCode"> <br /><br />
+        <input type="text" id="zip-code" name="zipCode"> <br /><br />
 
         <label for="city">City:</label><br />
         <input type="text" id="zip-code" name="city"> <br /><br />
@@ -41,24 +42,19 @@
        
         <label for="DeliveryDate">DeliveryDate:</label>
         <select id="DeliveryDate" name="DeliveryDate">
-            
-                <option value="1">1Days from now </option>
-                <option value="2">2Days from now </option>
-                <option value="3">3Days from now </option>
-                <option value="4">4Days from now </option>
-                <option value="5">5Days from now </option>
-                <option value="6">6Days from now </option>
-            
+
+            <option value="1">@DateTime.Today.AddDays(1).ToShortDateString() </option>
+            <option value="2">@DateTime.Today.AddDays(2).ToShortDateString() </option>
+            <option value="3">@DateTime.Today.AddDays(3).ToShortDateString() </option>
+            <option value="4">@DateTime.Today.AddDays(4).ToShortDateString() </option>
+            <option value="5">@DateTime.Today.AddDays(5).ToShortDateString() </option>
+            <option value="6">@DateTime.Today.AddDays(6).ToShortDateString() </option>
+
         </select> <br />
        
 
-        <label>DeliveryTime:</label><br />
-        <input type="radio" id="moring" value="moring" name="moringdel"><label for="moringdel">Moring</label><br>
-        <input type="radio" id="afternoon" value="afternoon" name="afternoondel"><label for="afternoondel">Afternoon</label><br />
-        <input type="radio" id="evning" value="evning" name="evning"><label for="evningdel">Evning</label><br /><br />
-
-        <label for="commentOnDelivery">Extra comment on delivery</label> <br />
-        <textarea id="commentOnDelivery" name="commentOnDelivery"></textarea> <br /><br />
+        <label for="CommentOnDelivery">Extra comment on delivery</label> <br />
+        <textarea id="CommentOnDelivery" name="CommentOnDelivery"></textarea> <br /><br />
 
         <label>Card Info</label><br />
 
@@ -74,7 +70,7 @@
 
     </fieldset>
 
-    <button type="submit">Pay</button>
+    <input type="submit" value="Pay"/>
 
     }
 

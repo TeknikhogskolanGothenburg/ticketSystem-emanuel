@@ -11,7 +11,7 @@ namespace TicketSystem.RestApiClient
 
         public List<ClassLibrary.Product> GetProduct()
         {
-            var client = new RestClient("http://localhost:50497/");
+            var client = new RestClient("http://localhost:53936/");
             var request = new RestRequest("api/values", Method.GET);
            
             var response = client.Execute<List<ClassLibrary.Product>>(request);
@@ -21,7 +21,7 @@ namespace TicketSystem.RestApiClient
          
         public List<ClassLibrary.Product> GetProductsByCatId(string ticketId)
         {
-            var client = new RestClient("http://localhost:50497/");
+            var client = new RestClient("http://localhost:53936//");
             var request = new RestRequest("api/values/{id}", Method.GET);
             request.AddUrlSegment("id", ticketId);
             IRestResponse<List<ClassLibrary.Product>> response = client.Execute<List<ClassLibrary.Product>>(request);

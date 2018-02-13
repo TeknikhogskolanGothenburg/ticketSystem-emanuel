@@ -21,10 +21,9 @@ namespace Webshop.Controllers
                        
         }
 
-       public IActionResult Thanks(string fname, string lname, string adress, int? zipCode, string city,
-                                      string mail, bool b2b, string DeliveryDate, bool moringdel, bool afternoondel, bool evningdel,
-                                      string commentOnDelivery, string cardnumber, DateTime date, int CVC)
+       public IActionResult Thanks(ClassLibrary.Order order)
        {         
+
 
            return View();
        }
