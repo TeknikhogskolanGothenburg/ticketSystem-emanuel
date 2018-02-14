@@ -7,8 +7,6 @@ using TicketSystem.DatabaseRepository;
 
 namespace WebshopApi.Controllers
 {
-    [Produces("application/json")]
-
     [Route("api/[controller]")]
     public class ValuesController : Controller
     {
@@ -28,7 +26,7 @@ namespace WebshopApi.Controllers
        }
 
         //POST api/values
-        [HttpPost]
+        [HttpPost("{id}")]
         public void Post([FromBody]string value)
         {   
              
