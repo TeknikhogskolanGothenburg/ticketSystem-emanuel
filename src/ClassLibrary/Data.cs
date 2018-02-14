@@ -5,13 +5,13 @@ namespace ClassLibrary
 {
     public class Person
     {
-       public string FirstName { get; set; }
-       public string LastName { get; set; }
-       public string Adress { get; set; }
-       public string ZipCode { get; set; }
-       public string City { get; set; }
-       public string Email { get; set; }
-       public bool Company { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Adress { get; set; }
+        public string ZipCode { get; set; }
+        public string City { get; set; }
+        public string Email { get; set; }
+        public bool Company { get; set; }
     }
     public class Product
     {
@@ -34,12 +34,24 @@ namespace ClassLibrary
     }
     public class Order
     {
-        
-       public DateTime DeliveryDate { get; set; }
-       public string CommentOnDelivery { get; set; }
-               
+
+        public DateTime DeliveryDate { get; set; }
+        public string CommentOnDelivery { get; set; }
+
     }
 
+    public class Cart
+    {
+        public int Total;
+        public List<CartItem> cartList = new List<CartItem>();
+
+    }
+
+    public class CartItem
+    {
+       public int Amount { get; set; }
+       public Product Product { get; set; }
+    }
 
 }
         

@@ -84,7 +84,7 @@
     </div>
     <div class="cart">
         
-        @foreach (var cartitem in Cart.cart)
+        @foreach (var cartitem in Cart.cartList)
         {
             Cart.Total += cartitem.Product.Price;
             <p>@cartitem.Amount : @cartitem.Product.Name : At @cartitem.Product.Price </p>
