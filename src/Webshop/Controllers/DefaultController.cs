@@ -4,8 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Webshop.Models;
-
+using WebShop.Models;
 namespace Webshop.Controllers
 {
     public class DefaultController : Controller

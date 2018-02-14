@@ -1,4 +1,4 @@
-﻿
+﻿@model ClassLibrary.Cart
 @{
     ViewBag.Title="Oder and pay";
         
@@ -84,12 +84,6 @@
     </div>
     <div class="cart">
         
-        @foreach (var cartitem in Cart.cartList)
-        {
-            Cart.Total += cartitem.Product.Price;
-            <p>@cartitem.Amount : @cartitem.Product.Name : At @cartitem.Product.Price </p>
-        }
-        <br />
-        <p> Total: @Cart.Total</p>
+
     </div>
 </div>

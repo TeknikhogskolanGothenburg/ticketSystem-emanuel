@@ -32,7 +32,15 @@ namespace ClassLibrary
 
         }
     }
+
     public class Order
+    {
+        public Delivery delivery;
+        public List<CartItem> cart;
+        public Person person;
+
+    }
+    public class Delivery
     {
 
         public DateTime DeliveryDate { get; set; }
@@ -42,7 +50,6 @@ namespace ClassLibrary
 
     public class Cart
     {
-        public int Total;
         public List<CartItem> cartList = new List<CartItem>();
 
     }

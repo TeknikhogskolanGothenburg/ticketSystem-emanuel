@@ -12,8 +12,7 @@ namespace TicketSystem.RestApiClient
         public List<ClassLibrary.Product> GetProduct()
         {
             var client = new RestClient("http://localhost:55441/");
-            var request = new RestRequest("api/values", Method.GET);
-           
+            var request = new RestRequest("api/values", Method.GET);          
             var response = client.Execute<List<ClassLibrary.Product>>(request);
             List<ClassLibrary.Product> test = response.Data;
             return test;
@@ -33,10 +32,10 @@ namespace TicketSystem.RestApiClient
             return response.Data;
         }
 
-        public void CustumerOrdert()
+        public void CustumerOrder(string Order)
         {
-
-
+            var client = new RestClient("http://localhost:55441/");
+            var request = new RestRequest("api/values/", Method.POST);
 
         }
     }
