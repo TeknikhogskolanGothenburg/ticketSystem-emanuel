@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Webshop.Models;
+using WebShop.Models;
 using TicketSystem.RestApiClient;
 using Newtonsoft.Json;
 
@@ -34,11 +34,19 @@ namespace Webshop.Controllers
 
         public IActionResult Thanks(ClassLibrary.Order order, ClassLibrary.Person person)
         {
-            string OrderToJson = JsonConvert.SerializeObject(order).ToString();
-            ClassLibrary.Order JsonToOrder  = JsonConvert.DeserializeObject<ClassLibrary.Order>(OrderToJson);
+            string orderToJson = JsonConvert.SerializeObject(order).ToString();
+            string personToJson = JsonConvert.SerializeObject(person).ToString();
+            string cart = JsonConvert.SerializeObject(Cart.cartList).ToString();
 
-            string jsonString2 = JsonConvert.ToString(person);
+            ClassLibrary.Order OderToJason  = JsonConvert.DeserializeObject<ClassLibrary.Order>(orderToJson);
+            ClassLibrary.Person PersonToJason = JsonConvert.DeserializeObject<ClassLibrary.Person>(personToJson);
+            ClassLibrary.Cart cartObj = JsonConvert.DeserializeObject<ClassLibrary.Cart>(cart);
+
+            Console.WriteLine(orderToJson);
             Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine(personToJson);
+
             return View();
         }
 
