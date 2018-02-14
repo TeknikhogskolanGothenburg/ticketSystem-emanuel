@@ -35,7 +35,9 @@ namespace TicketSystem.RestApiClient
         public void CustumerOrder(string Order)
         {
             var client = new RestClient("http://localhost:55441/");
-            var request = new RestRequest("api/values/", Method.POST);
+            var request = new RestRequest("api/values/{id}", Method.POST);
+            request.AddUrlSegment("id", Order);
+            IRestRequest irequest = (IRestRequest)client.Execute(request);
 
         }
     }
