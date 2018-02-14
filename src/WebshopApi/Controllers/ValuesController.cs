@@ -7,28 +7,28 @@ using TicketSystem.DatabaseRepository;
 
 namespace WebshopApi.Controllers
 {
-    
+    [Produces("application/json")]
+
     [Route("api/[controller]")]
     public class ValuesController : Controller
     {
         TicketDatabase db = new TicketDatabase();
-        // GET api/values
-        [HttpGet]
-        public List<ClassLibrary.Product> Get()
-        {
-            
-            return db.GetAllProd();
-        }
+       //GET api/values
+       [HttpGet]
+       public string[] Get()
+       {
+         
+           return db.GetAllProd();
+       }
 
-        // GET api/values/5
-        [HttpGet("{id}")]
-        public List<ClassLibrary.Product> Get(string id)
-        {
-            List<ClassLibrary.Product> list = db.GetAllProd(id);
-            return list;
-        }
+       // GET api/values/5
+       [HttpGet("{id}")]
+       public string[] Get(string id)
+       {
+            return new string[] { "hej", "whj" };
+       }
 
-        // POST api/values
+        //POST api/values
         [HttpPost]
         public void Post([FromBody]string value)
         {   

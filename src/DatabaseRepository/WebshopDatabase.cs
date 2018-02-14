@@ -28,7 +28,7 @@ namespace TicketSystem.DatabaseRepository
             }
         }
 
-        public List<ClassLibrary.Product> GetAllProd()
+        public string[] GetAllProd()
         {
             string cdm = @"
              SELECT *
@@ -36,7 +36,10 @@ namespace TicketSystem.DatabaseRepository
             using (var connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-                return connection.Query<ClassLibrary.Product>(cdm).ToList();                
+               // string OrderToJson = JsonConvert.connection.Query<ClassLibrary.Product>(cdm).ToList();
+                //string test = JsonConvert.DeserializeObject<ClassLibrary.Order>(OrderToJson);
+
+                return null;
             }
         }
 
