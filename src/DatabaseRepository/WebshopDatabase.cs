@@ -5,7 +5,7 @@ using Dapper;
 using System.Data.SqlClient;
 using TicketSystem.DatabaseRepository.Model;
 using System.Collections.ObjectModel;
-
+using Newtonsoft.Json;
 namespace TicketSystem.DatabaseRepository
 {
     public class TicketDatabase
@@ -28,7 +28,7 @@ namespace TicketSystem.DatabaseRepository
             }
         }
 
-        public string[] GetAllProd()
+        public string GetAllProd()
         {
             string cdm = @"
              SELECT *
@@ -36,10 +36,7 @@ namespace TicketSystem.DatabaseRepository
             using (var connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-               // string OrderToJson = JsonConvert.connection.Query<ClassLibrary.Product>(cdm).ToList();
-                //string test = JsonConvert.DeserializeObject<ClassLibrary.Order>(OrderToJson);
-
-                return null;
+                return "Some strign";
             }
         }
 
@@ -52,8 +49,7 @@ namespace TicketSystem.DatabaseRepository
              {
                 connection.Open();
                 return connection.Query<ClassLibrary.Product>(cdm).ToList();
-                
-             }
+            }
              
         }
 

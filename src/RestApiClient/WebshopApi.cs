@@ -33,7 +33,7 @@ namespace TicketSystem.RestApiClient
             return response.Data;
         }
 
-        public void CustumerOrdert(ClassLibrary.Order product, ClassLibrary.Cart cart )
+        public void CustumerOrdert()
         {
 
 

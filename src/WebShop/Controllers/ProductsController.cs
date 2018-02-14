@@ -12,22 +12,20 @@ namespace Webshop.Controllers
     public class ProductsController : Controller
     {
         WebshopApi db = new WebshopApi();
-
        
         public IActionResult Category(int? Amount, string Id)
         {
-            List<ClassLibrary.Product> prodList = new List<ClassLibrary.Product>(); 
-            prodList = db.GetProductsByCatId(Id);
-            return View(prodList);
+
+            return View(db.GetProductsByCatId(Id));
 
         }
-        public IActionResult AddProduct(int ProdId, int? Amount, string url)
+        public IActionResult AddProduct(ClassLibrary.Product prod, int? Amount, string url)
         {
-            if (Amount != null)
+            if (Amount != null && Amount > 0)
             {
-                ClassLibrary.Cart.cart.Add(new ClassLibrary.CartItem { PrductId = ProdId, Amount = (int)Amount });
+                Cart.AddItem(prod, (int)Amount);
             }
-            return null;
+            return Redirect(url);
         }
         public IActionResult Order_Pay()
         {

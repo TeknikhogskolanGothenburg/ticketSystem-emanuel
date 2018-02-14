@@ -17,15 +17,14 @@ namespace WebshopApi.Controllers
        [HttpGet]
        public string[] Get()
        {
-         
-           return db.GetAllProd();
+            return null;
        }
 
        // GET api/values/5
        [HttpGet("{id}")]
-       public string[] Get(string id)
+       public List<ClassLibrary.Product> Get(string id)
        {
-            return new string[] { "hej", "whj" };
+            return db.GetAllProd(id);
        }
 
         //POST api/values

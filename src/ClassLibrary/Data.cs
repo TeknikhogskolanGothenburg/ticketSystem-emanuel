@@ -40,17 +40,7 @@ namespace ClassLibrary
                
     }
 
-    public class Cart
-    {
-        public static List<CartItem> cart = new List<CartItem>();
-    }
 
-    public class CartItem
-    {
-        public int PrductId { get; set; }
-        public int Amount { get; set; }
-
-    }
 }
         
 

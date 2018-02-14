@@ -1,81 +1,91 @@
-﻿@model ClassLibrary.Person
+﻿
 @{
     ViewBag.Title="Oder and pay";
 }
 
-
-    <h1>Enter your info</h1>
-@using (Html.BeginForm("Thanks", "Products"))
-{
-
-    <fieldset>
-        
-        <legend>Name and adress</legend>
-
-        <label for="FirstName">First Name:</label> <br />
-        @Model <input type="text" id="FirstName" name="FirstName"> <br /><br />
-
-        <label for="LastName">Last Name:</label><br />
-        <input type="text" id="LastName" name="LastName"> <br /><br />
-
-        <label for="Adress">Adress:</label><br />
-        <input type="text" id="Adress" name="Adress"> <br /><br />
-        
-        <label for="ZipCode">Zip-Code</label><br />
-        <input type="text" id="ZipCode" name="ZipCode"> <br /><br />
-
-        <label for="City">City:</label><br />
-        <input type="text" id="City" name="City"> <br /><br />
-
-        <label for="Email">Email:</label><br />
-        <input type="email" id="Email" name="Email"><br /><br />
+<div class="orderPay">
 
 
-        <label for="Company" class="light">Company: </label> <input type="checkbox" id="b2b" value="true" name="b2b">
-        <input type="hidden" value="false" name="b2b">
+    <div class="from">
+        <h1>Enter your info</h1>
+        @using (Html.BeginForm("Thanks", "Products"))
+        {
 
-    </fieldset>
+            <fieldset>
 
-    <fieldset>
+                <legend>Name and adress</legend>
 
-        <legend>Shiping detail</legend>
+                <label for="FirstName">First Name:</label> <br />
+                @Model <input type="text" id="FirstName" name="FirstName"> <br /><br />
 
-        <div>
-            <label for="DeliveryDate">DeliveryDate:</label> <br />
-            <label for="DeliveryDate">@DateTime.Today.AddDays(1).ToShortDateString()</label>
-            <input type="radio" id="DeliveryDate" name="DeliveryDate" value="@DateTime.Today.AddDays(1).ToShortDateString()"><br />
+                <label for="LastName">Last Name:</label><br />
+                <input type="text" id="LastName" name="LastName"> <br /><br />
 
-            <label for="DeliveryDate">@DateTime.Today.AddDays(2).ToShortDateString()</label>
-            <input type="radio" id="DeliveryDate" name="DeliveryDate" value="@DateTime.Today.AddDays(2).ToShortDateString()"><br />
+                <label for="Adress">Adress:</label><br />
+                <input type="text" id="Adress" name="Adress"> <br /><br />
 
-            <label for="DeliveryDate">@DateTime.Today.AddDays(3).ToShortDateString()</label>
-            <input type="radio" id="DeliveryDate" name="DeliveryDate" value="@DateTime.Today.AddDays(3).ToShortDateString()"><br />
+                <label for="ZipCode">Zip-Code</label><br />
+                <input type="text" id="ZipCode" name="ZipCode"> <br /><br />
 
-            <label for="DeliveryDate">@DateTime.Today.AddDays(4).ToShortDateString()</label>
-            <input type="radio" id="DeliveryDate" name="DeliveryDate" value="@DateTime.Today.AddDays(4).ToShortDateString()"><br />
-        </div>
+                <label for="City">City:</label><br />
+                <input type="text" id="City" name="City"> <br /><br />
 
-       
-
-        <label for="CommentOnDelivery">Extra comment on delivery</label> <br />
-        <textarea id="CommentOnDelivery" name="CommentOnDelivery"></textarea> <br /><br />
-
-        <label>Card Info</label><br />
-
-        <label for="cardnumber">CardNumber</label>
-        <input type="text" id="cardnumber" name="cardnumber"/>
-
-        <label for="date">Date</label>
-        <input type="month" id="month" value="month" name="date" />
-
-        <label for="CVC">CVC</label>
-        <input  type="text" id="CVC"  name="CVC"/>
-   
-
-    </fieldset>
-
-    <input type="submit" value="Pay" />
-
-    }
+                <label for="Email">Email:</label><br />
+                <input type="email" id="Email" name="Email"><br /><br />
 
 
+                <label for="Company" class="light">Company: </label> <input type="checkbox" id="b2b" value="true" name="b2b">
+                <input type="hidden" value="false" name="b2b">
+
+            </fieldset>
+
+            <fieldset>
+
+                <legend>Shiping detail</legend>
+
+                <div>
+                    <label for="DeliveryDate">DeliveryDate:</label> <br />
+                    <label for="DeliveryDate">@DateTime.Today.AddDays(1).ToShortDateString()</label>
+                    <input type="radio" id="DeliveryDate" name="DeliveryDate" value="@DateTime.Today.AddDays(1).ToShortDateString()"><br />
+
+                    <label for="DeliveryDate">@DateTime.Today.AddDays(2).ToShortDateString()</label>
+                    <input type="radio" id="DeliveryDate" name="DeliveryDate" value="@DateTime.Today.AddDays(2).ToShortDateString()"><br />
+
+                    <label for="DeliveryDate">@DateTime.Today.AddDays(3).ToShortDateString()</label>
+                    <input type="radio" id="DeliveryDate" name="DeliveryDate" value="@DateTime.Today.AddDays(3).ToShortDateString()"><br />
+
+                    <label for="DeliveryDate">@DateTime.Today.AddDays(4).ToShortDateString()</label>
+                    <input type="radio" id="DeliveryDate" name="DeliveryDate" value="@DateTime.Today.AddDays(4).ToShortDateString()"><br />
+                </div>
+
+
+
+                <label for="CommentOnDelivery">Extra comment on delivery</label> <br />
+                <textarea id="CommentOnDelivery" name="CommentOnDelivery"></textarea> <br /><br />
+
+                <label>Card Info</label><br />
+
+                <label for="cardnumber">CardNumber</label>
+                <input type="text" id="cardnumber" name="cardnumber" />
+
+                <label for="date">Date</label>
+                <input type="month" id="month" value="month" name="date" />
+
+                <label for="CVC">CVC</label>
+                <input type="text" id="CVC" name="CVC" />
+
+
+            </fieldset>
+
+            <input type="submit" value="Pay" />
+
+        }
+    </div>
+    <div class="cart">
+        @foreach (var cartitem in Cart.cart)
+        { 
+
+
+        }
+    </div>
+</div>

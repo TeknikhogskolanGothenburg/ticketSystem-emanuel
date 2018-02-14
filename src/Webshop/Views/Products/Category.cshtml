@@ -23,9 +23,15 @@
                 @using (Html.BeginForm("AddProduct", "Products"))
                 {
                     <label>Amount</label>
-                    <input type="hidden" name="ProdId" value="@product.Id" />
                     <input type="hidden" name="url" value="@Url.RouteUrl(ViewContext.RouteData.Values)"/>
                     <input type="number" name="Amount" style="width:60px;" />
+                    <input type="hidden" name="Id" value="@product.Id" />
+                    <input type="hidden" name="CatagoryId" value="@product.CatagoryId" />
+                    <input type="hidden" name="Name" value="@product.Name" />
+                    <input type="hidden" name="Description" value="@product.Description" />
+                    <input type="hidden" name="Price" value="@product.Price" />
+                    <input type="hidden" name="ImgName" value="@product.ImgName" />
+
                     <input type="submit" value="Add" style="width:50px;" />
                 }
             </div>
