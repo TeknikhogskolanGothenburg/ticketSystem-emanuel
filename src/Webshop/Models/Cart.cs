@@ -12,6 +12,7 @@ namespace Webshop.Models
 
     public static class Cart
     {
+        public static int Total;
         static public List<CartItem> cart = new List<CartItem>();
 
 

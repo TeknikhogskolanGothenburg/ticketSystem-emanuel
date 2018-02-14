@@ -114,7 +114,7 @@
 }
 
 .orderPay {
-    padding: 0px;
+    padding: 0;
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
@@ -122,19 +122,10 @@
     width: 100%;
 }
 .cart {
-    margin-top: 15%;
-    margin-bottom: 40%;
-    
     display: flex;
-    text-align: left;
-    border-style: solid;
-    border-color: blue;
     
 }
 
 .form {
-    display: flex;  
-    width: 50px;
-    margin-right: 20%;
-    margin-left: 10%;
+    display: flex;
 }

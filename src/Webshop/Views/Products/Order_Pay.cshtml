@@ -1,6 +1,7 @@
 ﻿
 @{
     ViewBag.Title="Oder and pay";
+        
 }
 
 <div class="orderPay">
@@ -77,15 +78,18 @@
 
             </fieldset>
 
-            <input type="submit" value="Pay" />
+            <input type="submit" value="Pay" /> <br />
 
         }
     </div>
     <div class="cart">
+        
         @foreach (var cartitem in Cart.cart)
-        { 
-
-
+        {
+            Cart.Total += cartitem.Product.Price;
+            <p>@cartitem.Amount : @cartitem.Product.Name : At @cartitem.Product.Price </p>
         }
+        <br />
+        <p> Total: @Cart.Total</p>
     </div>
 </div>
