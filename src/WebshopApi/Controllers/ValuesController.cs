@@ -27,10 +27,17 @@ namespace WebshopApi.Controllers
 
         //POST api/values
         [HttpPost("{id}")]
-        public void Post([FromBody]string value)
+        public void Post([FromBody]ClassLibrary.Order order)
         {   
              
         }
+
+        [HttpPost()]
+        public void Posta([FromBody]string value)
+        {
+
+        }
+
 
         // PUT api/values/5
         [HttpPut("{id}")]

@@ -37,7 +37,7 @@ namespace Webshop.Controllers
 
             string orderToJson = JsonConvert.SerializeObject(new ClassLibrary.Order { delivery = delivery, person = person, cart = Cart.cartList }).ToString();
 
-            db.CustumerOrder(orderToJson);
+            db.CustumerOrder(new ClassLibrary.Order {delivery=delivery,person=person,cart=Cart.cartList});
 
 
    
