@@ -32,17 +32,16 @@ namespace Webshop.Controllers
             return View();
         }
 
-        public IActionResult Thanks(ClassLibrary.Delivery delivery, ClassLibrary.Person person)
+        public IActionResult Thanks(ClassLibrary.Delivery delivery, ClassLibrary.Person person, ClassLibrary.CardInfo card)
         {
 
-            string orderToJson = JsonConvert.SerializeObject(new ClassLibrary.Order { delivery = delivery, person = person, cart = Cart.cartList }).ToString();
-
-            db.CustumerOrder(new ClassLibrary.Order {delivery=delivery,person=person,cart=Cart.cartList});
 
 
-   
+            db.CustumerOrder(new ClassLibrary.Order {delivery=delivery,person=person,cart=Cart.cartList, card=card});
 
 
+            Cart.cartList.Clear();
+            Cart.Total = 0;
 
             return View();
         }
