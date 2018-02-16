@@ -38,6 +38,7 @@ namespace ClassLibrary
         public Delivery delivery;
         public List<CartItem> cart;
         public Person person;
+        public CardInfo card;
 
     }
     public class Delivery
@@ -60,6 +61,12 @@ namespace ClassLibrary
        public Product Product { get; set; }
     }
 
+    public class CardInfo
+    {
+       public string cardNumber;
+       public DateTime date;
+       public string CVC; 
+    }
 }
         
 

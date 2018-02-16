@@ -49,8 +49,46 @@ namespace TicketSystem.DatabaseRepository
              {
                 connection.Open();
                 return connection.Query<ClassLibrary.Product>(cdm).ToList();
-            }
+             }
              
+        }
+
+        public void AddOrder(ClassLibrary.Order order)
+        {
+            int Id = 0; 
+            string cmdEmailExist = @"select * From Person where Email='Emanuel_joh@hotmail.com'";
+            string selectIdFomEmail = @"select id From Person where Email='Emanuel_joh@hotmail.com'";
+            string createOrder = @"insert into WebOrder(CustumerID,DeliveryDate,CommentOnDelivery)";
+            string joinProdOrder = @"insert into JoinProductOrder(ProductId,WebOderId,Amount) Values ";
+            string items = "";
+
+            using (var connection = new SqlConnection(connectionString))
+            {
+               connection.Open();
+                if (connection.Query<ClassLibrary.Person>(cmdEmailExist).ToList().Count() > 0)
+                {
+                    var Personid = connection.Query<int>(selectIdFomEmail).ToList();
+                    Id = int.Parse(Personid[0].ToString());
+                    connection.Query<int>(createOrder+ "Values('" + Id + "','" + order.delivery.DeliveryDate + "','" + order.delivery.CommentOnDelivery + "')");
+                    var WebOrderId = connection.Query<int>("SELECT IDENT_CURRENT ('WebOrder') AS Current_Identity").First();
+
+
+
+                    for (int i = 0; i<order.cart.Count; i++)
+                    {
+
+                        items += "(" + order.cart[i].Product.Id + "," + WebOrderId.ToString() +","+ order.cart[i].Amount+ "),";
+                    }
+                    connection.Query<int>(joinProdOrder+items.Substring(0,items.Length-1));
+                }
+
+
+            }
+
+
+            //select * From Person where Email='Emanuel_joh@hotmail.com'
+            //insert into Person(FirstName, LastName, Adress, City,[Zip - Code], Email, Company)
+            //Values('Emanuel', 'Johansson', 'Rudu52', 'Huskvarna', '56192', 'Emanuel_joh@hotmail.com', 0)
         }
 
 

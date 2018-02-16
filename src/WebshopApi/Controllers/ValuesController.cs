@@ -28,8 +28,9 @@ namespace WebshopApi.Controllers
         //POST api/values
         [HttpPost("{id}")]
         public void Post([FromBody]ClassLibrary.Order order)
-        {   
-             
+        {
+
+            db.AddOrder(order);
         }
 
         [HttpPost()]
