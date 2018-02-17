@@ -37,7 +37,7 @@ namespace Webshop.Controllers
 
 
 
-            db.CustumerOrder(new ClassLibrary.Order {delivery=delivery,person=person,cart=Cart.cartList, card=card});
+            db.CustumerOrder(new ClassLibrary.Order {delivery=delivery,person=person,cart=Cart.cartList});
 
 
             Cart.cartList.Clear();
