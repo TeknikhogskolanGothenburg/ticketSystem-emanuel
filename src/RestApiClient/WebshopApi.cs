@@ -43,7 +43,9 @@ namespace TicketSystem.RestApiClient
             var request = new RestRequest("api/Backoffice/{search}", Method.GET);
             request.AddUrlSegment("search", serchRequest.fName+","+serchRequest.lName+","+serchRequest.email);
             var response = client.Execute<List<ClassLibrary.Order>>(request);
-            return response.Data;
+            List<ClassLibrary.Order> list = JsonConvert.DeserializeObject<List<ClassLibrary.Order>>(response.Content);
+
+            return list;
         }
 
         //takes a order obj and put it in the database

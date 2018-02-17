@@ -44,8 +44,8 @@ namespace WebshopApi.Controllers
 
             if (a[2] != "") { having += "Email = '" + a[2]+"'"; }
 
-            var hej = db.GetMatchingOrders(SelectDeliveryAndCoustumer + having);
-            return hej;
+            return db.GetMatchingOrders(SelectDeliveryAndCoustumer + having);
+            
         }
         
         // POST: api/Backoffice
