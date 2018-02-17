@@ -30,8 +30,7 @@ namespace Admin.Controllers
         public IActionResult FindPurchase(string fname, string lname, string mail, bool isSearchCall)
         {
 
-            List<Oder> oder = new List<Oder>(); // Skapar en lista men odrar för att testa, detta ska läsas från min datorbas senare. (Alla odrar kommer att vara i denna lista) Eller så skickar jag bara sök-objhektet till APIn som gör qury på mi sql-databas
-            // Api retunerar de odrar som fick träff i en lista. 
+           
             OderList result = new OderList();
 
             if (fname == null && lname == null && mail == null && isSearchCall == false)

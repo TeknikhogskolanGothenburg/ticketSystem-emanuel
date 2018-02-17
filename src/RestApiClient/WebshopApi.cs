@@ -40,10 +40,10 @@ namespace TicketSystem.RestApiClient
         public List<ClassLibrary.Order> GetMatchingOrders(ClassLibrary.SerchRequest serchRequest)
         {
             var client = new RestClient(localHost);
-            var request = new RestRequest("api/values", Method.GET);
-            request.AddJsonBody(serchRequest);
-            client.Execute(request);
-            return null;
+            var request = new RestRequest("api/Backoffice/{search}", Method.GET);
+            request.AddUrlSegment("search", serchRequest.fName+","+serchRequest.lName+","+serchRequest.email);
+            var response = client.Execute<List<ClassLibrary.Order>>(request);
+            return response.Data;
         }
 
         //takes a order obj and put it in the database

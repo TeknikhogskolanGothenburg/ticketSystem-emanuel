@@ -61,7 +61,7 @@ namespace TicketSystem.DatabaseRepository
             int Id = 0; 
             string cmdEmailExist = @"select * From Person where Email='"+order.person.Email+"'";
             string selectIdFomEmail = @"select id From Person where Email='"+order.person.Email+"'";
-            string insertPerson = @"insert into Person(FirstName,LastName,Adress,[Zip-Code],City,Email,Company) Values (";
+            string insertPerson = @"insert into Person(FirstName,LastName,Adress,[Zip-Code],City,Email) Values (";
             string createOrder = @"insert into WebOrder(CustumerID,DeliveryDate,CommentOnDelivery)";
             string joinProdOrder = @"insert into JoinProductOrder(ProductId,WebOderId,Amount) Values ";
             string items = "";
@@ -88,7 +88,7 @@ namespace TicketSystem.DatabaseRepository
                 else
                 {
                     connection.Query(insertPerson + "'" + order.person.FirstName + "','" + order.person.LastName + "','" + order.person.Adress + "','" +
-                    order.person.ZipCode + "','" + order.person.City + "','" + order.person.Email + "'," + order.person.Company + ")");
+                    order.person.ZipCode + "','" + order.person.City + "','" + order.person.Email + "')");
 
                     var Personid = connection.Query<int>(selectIdFomEmail).ToList();
                     Id = int.Parse(Personid[0].ToString());
@@ -125,7 +125,7 @@ namespace TicketSystem.DatabaseRepository
                     id = (int)reader[0],
                     delivery = new ClassLibrary.Delivery { DeliveryDate = (DateTime)reader[1], CommentOnDelivery = (string)reader[2] },
                     person = new ClassLibrary.Person { FirstName = (string)reader[3], LastName = (string)reader[4], Adress = (string)reader[5],
-                    ZipCode = (string)reader[6].ToString(), City=(string)reader[7], Email=(string)reader[8], Company=(bool)reader[9]
+                    ZipCode = (string)reader[6].ToString(), City=(string)reader[7], Email=(string)reader[8]
                     }
                 });
                                                                             
