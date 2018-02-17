@@ -11,11 +11,27 @@ namespace WebshopApi.Controllers
     public class ValuesController : Controller
     {
         TicketDatabase db = new TicketDatabase();
-       //GET api/values
-       [HttpGet]
-       public string[] Get()
-       {
-            return null;
+        //GET api/values
+        [HttpGet]
+        public List<ClassLibrary.Order> Get(ClassLibrary.SerchRequest search)
+        {
+            string SelectDeliveryAndCoustumer = @"SELECT WebOrder.Id as OrderId, DeliveryDate, CommentOnDelivery,
+                                                 FirstName,LastName,Adress, [Zip-Code], City, Email, Company
+                                                
+                                                 from WebOrder 
+                                                 join Person on WebOrder.CustumerID = Person.id
+                                                 join JoinProductOrder on WebOrder.Id = JoinProductOrder.WebOderId
+                                                 group by WebOrder.Id, WebOrder.DeliveryDate,WebOrder.CommentOnDelivery, Person.FirstName,
+                                                 Person.LastName, Person.Adress, Person.[Zip-Code],Person.City, Person.Email, Person.Company
+                                                 ";
+            string having = "HAVING ";
+            if (search.email != null) { having += "Email = " + search.email + " AND "; }
+            if (search.fName != null) { having += "FirstName = " + search.fName + " AND ";}
+            if (search.lName != null) { having += "LastName = " + search.lName; }
+
+             var hej = db.GetMatchingOrders(SelectDeliveryAndCoustumer);
+            return hej;
+
        }
 
        // GET api/values/5

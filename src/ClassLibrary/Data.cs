@@ -11,15 +11,14 @@ namespace ClassLibrary
         public string ZipCode { get; set; }
         public string City { get; set; }
         public string Email { get; set; }
-        public bool Company { get; set; }
     }
     public class Product
     {
-        public int Id { get; set; }
-        public int CatagoryId { get; set; }
-        public string Name { get; set; }
-        public string Description { get; set; }
-        public int Price { get; set; }
+            public int Id { get; set; }
+            public int CatagoryId { get; set; }
+            public string Name { get; set; }
+            public string Description { get; set; }
+            public int Price { get; set; }
         public string ImgName { get; set; }
 
         public string ImgFilePath
@@ -35,10 +34,10 @@ namespace ClassLibrary
 
     public class Order
     {
+        public int id;
         public Delivery delivery;
         public List<CartItem> cart;
         public Person person;
-        public CardInfo card;
 
     }
     public class Delivery
@@ -57,16 +56,24 @@ namespace ClassLibrary
 
     public class CartItem
     {
-       public int Amount { get; set; }
-       public Product Product { get; set; }
+        public int Amount { get; set; }
+        public Product Product { get; set; }
     }
 
     public class CardInfo
     {
-       public string cardNumber;
-       public DateTime date;
-       public string CVC; 
+        public string cardNumber;
+        public DateTime date;
+        public string CVC;
     }
+
+    public class SerchRequest
+    {
+        public string fName;
+        public string lName;
+        public string email;
+    }
+
 }
         
 

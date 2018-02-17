@@ -11,6 +11,7 @@ namespace TicketSystem.RestApiClient
         // Implemented using RestSharp: http://restsharp.org/
         string localHost = "http://localhost:55441/";
 
+        // does nothing atm
         public List<ClassLibrary.Product> GetProduct()
         {
             var client = new RestClient(localHost);
@@ -20,6 +21,8 @@ namespace TicketSystem.RestApiClient
             return test;
         }
          
+
+        // gets all the products from the requested catagory
         public List<ClassLibrary.Product> GetProductsByCatId(string CategoryId)
         {
             var client = new RestClient(localHost);
@@ -34,6 +37,16 @@ namespace TicketSystem.RestApiClient
             return response.Data;
         }
 
+        public List<ClassLibrary.Order> GetMatchingOrders(ClassLibrary.SerchRequest serchRequest)
+        {
+            var client = new RestClient(localHost);
+            var request = new RestRequest("api/values", Method.GET);
+            request.AddJsonBody(serchRequest);
+            client.Execute(request);
+            return null;
+        }
+
+        //takes a order obj and put it in the database
         public void CustumerOrder(ClassLibrary.Order order)
         {
 
@@ -42,7 +55,9 @@ namespace TicketSystem.RestApiClient
             request.AddJsonBody(order);
             client.Execute(request);
 
-            //Vad gör den här raden?
+            //Vad gör den här raden? - inget
         }
+
+        
     }
 }

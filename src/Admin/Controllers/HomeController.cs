@@ -12,11 +12,10 @@ namespace Admin.Controllers
 
     public class HomeController : Controller
     {
-
+        WebshopApi db = new WebshopApi();
         // använd rest API
         public IActionResult AddProd(string ProdName, string CatagoryId, string Description, int Price, string imgName, bool IsAddProd)
         {
-            TicketApi api = new TicketApi();
 
             
             if (CatagoryId == null || Description == null || Price == 1|| imgName == null && IsAddProd == true)
@@ -40,31 +39,9 @@ namespace Admin.Controllers
             return View(result); // Return the same view (blank ~/home/FindPurchase or a error promt) if no fields is given values, 
             }
 
-            oder.Add(new Oder {ObjectVarfname="Emanuel",ObjectVarlname="Johansson", ObjectVarmail="Emanuel_joh@hotmail.com", OderNumber=100 });
-            oder.Add(new Oder {ObjectVarfname="Göran",ObjectVarlname="Valflesk",ObjectVarmail="valflask@alltid.nu", OderNumber=101 });
-            oder.Add(new Oder {ObjectVarfname="Carina", ObjectVarlname= "Johansson",ObjectVarmail="RandomMail", OderNumber=102 });
-            oder.Add(new Oder {ObjectVarfname= "SORAN",ObjectVarlname="ISMAIL",ObjectVarmail="soran@soran.se", OderNumber=103 });
-
-            result.oderList = AddToList(oder, new SearchResult { ObjectVarfname = fname, ObjectVarlname = lname, ObjectVarmail = mail }); // Se  korligt ut men det är det ej! 
-                                                                                                                                          //Oderlist klassen innhåller bara en lista på odrar som propety.Jag skapar en ny lista med odrar som jag kallar för result. Denna lista kommer att innhålla alla de sökresultat som fick en matching. ( Genom metoden "AddTolist" )
-
+            List<ClassLibrary.Order> matchedOrders = db.GetMatchingOrders
+                (new ClassLibrary.SerchRequest {fName=fname, lName=lname, email =mail});
             return View(result); //should return the orders that matches the search result
-        }
-
-
-         
-       public List<Oder> AddToList(List<Oder> oderList, SearchResult searchResult )
-        {
-            List<Oder> returnList = new List<Oder>();
-            foreach (Oder oder in oderList)
-            {
-                if (
-                    oder.ObjectVarfname==searchResult.ObjectVarfname ||
-                    oder.ObjectVarlname==searchResult.ObjectVarlname ||
-                    oder.ObjectVarmail==searchResult.ObjectVarmail                    
-                    ){ returnList.Add(oder); }
-            }
-            return returnList;
         }
 
     }

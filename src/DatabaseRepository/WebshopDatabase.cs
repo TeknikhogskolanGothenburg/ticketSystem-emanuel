@@ -6,6 +6,9 @@ using System.Data.SqlClient;
 using TicketSystem.DatabaseRepository.Model;
 using System.Collections.ObjectModel;
 using Newtonsoft.Json;
+using System;
+using System.Globalization;
+
 namespace TicketSystem.DatabaseRepository
 {
     public class TicketDatabase
@@ -56,8 +59,9 @@ namespace TicketSystem.DatabaseRepository
         public void AddOrder(ClassLibrary.Order order)
         {
             int Id = 0; 
-            string cmdEmailExist = @"select * From Person where Email='Emanuel_joh@hotmail.com'";
-            string selectIdFomEmail = @"select id From Person where Email='Emanuel_joh@hotmail.com'";
+            string cmdEmailExist = @"select * From Person where Email='"+order.person.Email+"'";
+            string selectIdFomEmail = @"select id From Person where Email='"+order.person.Email+"'";
+            string insertPerson = @"insert into Person(FirstName,LastName,Adress,[Zip-Code],City,Email,Company) Values (";
             string createOrder = @"insert into WebOrder(CustumerID,DeliveryDate,CommentOnDelivery)";
             string joinProdOrder = @"insert into JoinProductOrder(ProductId,WebOderId,Amount) Values ";
             string items = "";
@@ -69,27 +73,118 @@ namespace TicketSystem.DatabaseRepository
                 {
                     var Personid = connection.Query<int>(selectIdFomEmail).ToList();
                     Id = int.Parse(Personid[0].ToString());
-                    connection.Query<int>(createOrder+ "Values('" + Id + "','" + order.delivery.DeliveryDate + "','" + order.delivery.CommentOnDelivery + "')");
+                    connection.Query<int>(createOrder + "Values('" + Id + "','" + order.delivery.DeliveryDate + "','" + order.delivery.CommentOnDelivery + "')");
                     var WebOrderId = connection.Query<int>("SELECT IDENT_CURRENT ('WebOrder') AS Current_Identity").First();
 
 
 
-                    for (int i = 0; i<order.cart.Count; i++)
+                    for (int i = 0; i < order.cart.Count; i++)
                     {
 
-                        items += "(" + order.cart[i].Product.Id + "," + WebOrderId.ToString() +","+ order.cart[i].Amount+ "),";
+                        items += "(" + order.cart[i].Product.Id + "," + WebOrderId.ToString() + "," + order.cart[i].Amount + "),";
                     }
-                    connection.Query<int>(joinProdOrder+items.Substring(0,items.Length-1));
+                    connection.Query<int>(joinProdOrder + items.Substring(0, items.Length - 1));
+                }
+                else
+                {
+                    connection.Query(insertPerson + "'" + order.person.FirstName + "','" + order.person.LastName + "','" + order.person.Adress + "','" +
+                    order.person.ZipCode + "','" + order.person.City + "','" + order.person.Email + "'," + order.person.Company + ")");
+
+                    var Personid = connection.Query<int>(selectIdFomEmail).ToList();
+                    Id = int.Parse(Personid[0].ToString());
+                    connection.Query<int>(createOrder + "Values('" + Id + "','" + order.delivery.DeliveryDate + "','" + order.delivery.CommentOnDelivery + "')");
+                    var WebOrderId = connection.Query<int>("SELECT IDENT_CURRENT ('WebOrder') AS Current_Identity").First();
+
+
+
+                    for (int i = 0; i < order.cart.Count; i++)
+                    {
+
+                        items += "(" + order.cart[i].Product.Id + "," + WebOrderId.ToString() + "," + order.cart[i].Amount + "),";
+                    }
+
                 }
 
+            }
+        }
+
+        public List<ClassLibrary.Order> GetMatchingOrders(string cdm)
+        {
+            string secoundCommand = @"select * from JoinProductOrder join Product on JoinProductOrder.ProductId=Product.id";
+            SqlConnection connection = new SqlConnection(connectionString);
+            SqlCommand command = new SqlCommand(cdm, connection);
+
+                List<ClassLibrary.Order> Orders = new List<ClassLibrary.Order>();
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+
+            while (reader.Read())
+            {
+                Orders.Add(new ClassLibrary.Order
+                {
+                    id = (int)reader[0],
+                    delivery = new ClassLibrary.Delivery { DeliveryDate = (DateTime)reader[1], CommentOnDelivery = (string)reader[2] },
+                    person = new ClassLibrary.Person { FirstName = (string)reader[3], LastName = (string)reader[4], Adress = (string)reader[5],
+                    ZipCode = (string)reader[6].ToString(), City=(string)reader[7], Email=(string)reader[8], Company=(bool)reader[9]
+                    }
+                });
+                                                                            
+            }
+            connection.Close();
+            command = new SqlCommand(secoundCommand, connection);
+            connection.Open();
+            reader = command.ExecuteReader();
+
+            while(reader.Read())
+            {
+                foreach(var order in Orders)
+                {
+                    if (order.cart == null && (int)reader[1] == order.id)
+                    {
+                        order.cart = new List<ClassLibrary.CartItem>
+                        { (new ClassLibrary.CartItem {Amount=(int)reader[2],
+                            Product= new ClassLibrary.Product {Id=(int)reader[3], CatagoryId=(int)reader[4],Description=(string)reader[5],
+                            Price=(int)reader[6], ImgName=(string)reader[7],Name=(string)reader[8]}})
+                        };
+                    }
+                    else if ((int)reader[1] == order.id)
+                    {
+                        order.cart.Add(new ClassLibrary.CartItem
+                        {
+                            Amount = (int)reader[2],
+                            Product = new ClassLibrary.Product
+                            {
+                                Id = (int)reader[3],
+                                CatagoryId = (int)reader[4],
+                                Description = (string)reader[5],
+                                Price = (int)reader[6],
+                                ImgName = (string)reader[7],
+                                Name = (string)reader[8]
+                            }
+                        });
+                    }
+                }
 
             }
 
-
-            //select * From Person where Email='Emanuel_joh@hotmail.com'
-            //insert into Person(FirstName, LastName, Adress, City,[Zip - Code], Email, Company)
-            //Values('Emanuel', 'Johansson', 'Rudu52', 'Huskvarna', '56192', 'Emanuel_joh@hotmail.com', 0)
+            return Orders;
         }
+
+
+
+
+        //            SqlCommand command = new SqlCommand(sql, connection);
+        //            List<Appointment> appointments = new List<Appointment>();
+        //            SqlDataReader reader = command.ExecuteReader();
+        //            while (reader.Read())
+        //            {
+        //                appointments.Add(new Appointment
+        //                {
+        //                    Date = reader.GetDateTime(1),
+        //                    Doctor = reader.GetString(2),
+        //                    PersonalIdentityNumber = reader.GetString(0)
+        //                });
+        //            }
 
 
 
