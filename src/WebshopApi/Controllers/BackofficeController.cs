@@ -52,6 +52,7 @@ namespace WebshopApi.Controllers
         [HttpPost]
         public void Post([FromBody] ClassLibrary.Product product)
         {
+            db.AddProdToBd(product);
 
         }
         

@@ -21,9 +21,9 @@ namespace WebshopApi.Controllers
 
        // GET api/values/5
        [HttpGet("{id}")]
-       public List<ClassLibrary.Product> Get(string id)
+       public List<ClassLibrary.Product> Get()
        {
-            return db.GetAllProd(id);
+            return db.GetAllProd();
        }
 
         //POST api/values

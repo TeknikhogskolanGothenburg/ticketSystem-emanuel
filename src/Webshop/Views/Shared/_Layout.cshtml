@@ -19,11 +19,7 @@
         <div id="navbar">
             <ul>
                 <li class="Home-btn">@Html.ActionLink(linkText: "Home", actionName: "Home", controllerName: "Default")</></li>
-                <li>@Html.ActionLink(linkText: "Category1", actionName: "Category", controllerName: "Products", routeValues: new { Id = "1" }, htmlAttributes: null)</></li>
-                <li>@Html.ActionLink(linkText: "Category2", actionName: "Category", controllerName: "Products", routeValues: new { Id = "2" }, htmlAttributes: null)</></li>
-                <li>@Html.ActionLink(linkText: "Category3", actionName: "Category", controllerName: "Products", routeValues: new { Id = "3" }, htmlAttributes: null)</></li>
-                <li>@Html.ActionLink(linkText: "Category4", actionName: "Category", controllerName: "Products", routeValues: new { Id = "4" }, htmlAttributes: null)</></li>
-                <li>@Html.ActionLink(linkText: "Category5", actionName: "Category", controllerName: "Products", routeValues: new { Id = "5" }, htmlAttributes: null)</></li>
+                <li>@Html.ActionLink(linkText: "Shop", actionName: "Category", controllerName: "Products")</></li>               
                 <li style="background-color:chartreuse">@Html.ActionLink(linkText: "Order", actionName: "Order_Pay", controllerName: "Products")</></li>
             </ul>
         </div>

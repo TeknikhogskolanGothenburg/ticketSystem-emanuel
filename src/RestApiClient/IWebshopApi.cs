@@ -15,6 +15,6 @@ namespace TicketSystem.RestApiClient
         /// </summary>
         /// <param name="ticketId">ID of the ticket</param>
         /// <returns></returns>
-        List<ClassLibrary.Product> GetProductsByCatId(string ticketId);
+        List<ClassLibrary.Product> GetProductsByCatId();
     }
 }

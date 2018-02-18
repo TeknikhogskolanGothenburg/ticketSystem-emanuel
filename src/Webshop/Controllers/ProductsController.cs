@@ -12,11 +12,11 @@ namespace Webshop.Controllers
     public class ProductsController : Controller
     {
         WebshopApi db = new WebshopApi();
-       
-        public IActionResult Category(int? Amount, string Id)
+        ClassLibrary.Validator val = new ClassLibrary.Validator();
+        public IActionResult Category()
         {
 
-            return View(db.GetProductsByCatId(Id));
+            return View(db.GetProductsByCatId());
 
         }
         public IActionResult AddProduct(ClassLibrary.Product prod, int? Amount, string url)
@@ -36,14 +36,20 @@ namespace Webshop.Controllers
         {
 
 
-
-            db.CustumerOrder(new ClassLibrary.Order {delivery=delivery,person=person,cart=Cart.cartList});
-
-
-            Cart.cartList.Clear();
-            Cart.Total = 0;
-
-            return View();
+            if (val.ValidateName(person.FirstName) && val.ValidateName(person.LastName) && val.ValidateAdress(person.Adress) &&
+                val.ValidateZip(person.ZipCode) && val.ValidateCity(person.City) && val.ValidateEmail(person.Email) &&
+                val.ValidateDes(delivery.CommentOnDelivery)
+                )
+            {
+                db.CustumerOrder(new ClassLibrary.Order { delivery = delivery, person = person, cart = Cart.cartList });
+                Cart.cartList.Clear();
+                Cart.Total = 0;
+                return View();
+            }
+            else
+            {
+                return View();
+            }
         }
 
     }

@@ -22,32 +22,20 @@ namespace TicketSystem.DatabaseRepository
             using (var connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-                connection.Query("insert into Product([Id],[CatagoryId],[Name],[Description],[Price],[ImgName],[ImgPath]) " +
-                    "values(@Id,@CatagoryId, @Name, @Description, @Price, @ImgName, @ImgPath)", 
-                    new { Id = product.Id, CatagoryId = product.CatagoryId, Description=product.Description, Name=product.Name, Price = product.Price, ImgName=product.ImgName, ImgPath=product.ImgFilePath });
+                connection.Query("insert into Product(Name,Description,Price,ImgName)" +
+                    "values('" + product.Name + "','" + product.Description + "'," + product.Price + ",'" + product.ImgName + "')");
+
                 return product;
-                //var addedVenueQuery = connection.Query<int>("SELECT IDENT_CURRENT ('Product') AS Current_Identity").First();
-                //return connection.Query<ClassLibrary.Product>("SELECT * FROM Product WHERE Id=@Id", new { Id = addedVenueQuery }).First(); 
             }
         }
 
-        public string GetAllProd()
+    
+        
+        public List<ClassLibrary.Product> GetAllProd()
         {
             string cdm = @"
              SELECT *
              FROM Product";
-            using (var connection = new SqlConnection(connectionString))
-            {
-                connection.Open();
-                return "Some strign";
-            }
-        }
-        
-        public List<ClassLibrary.Product> GetAllProd(string Id)
-        {
-            string cdm = @"
-             SELECT *
-             FROM Product where CatagoryId=" + Id;
              using (var connection = new SqlConnection(connectionString))
              {
                 connection.Open();
@@ -143,8 +131,8 @@ namespace TicketSystem.DatabaseRepository
                     {
                         order.cart = new List<ClassLibrary.CartItem>
                         { (new ClassLibrary.CartItem {Amount=(int)reader[2],
-                            Product= new ClassLibrary.Product {Id=(int)reader[3], CatagoryId=(int)reader[4],Description=(string)reader[5],
-                            Price=(int)reader[6], ImgName=(string)reader[7],Name=(string)reader[8]}})
+                            Product= new ClassLibrary.Product {Id=(int)reader[3],Description=(string)reader[4],
+                            Price=(int)reader[5], ImgName=(string)reader[6],Name=(string)reader[7]}})
                         };
                     }
                     else if ((int)reader[1] == order.id)
@@ -155,11 +143,10 @@ namespace TicketSystem.DatabaseRepository
                             Product = new ClassLibrary.Product
                             {
                                 Id = (int)reader[3],
-                                CatagoryId = (int)reader[4],
-                                Description = (string)reader[5],
-                                Price = (int)reader[6],
-                                ImgName = (string)reader[7],
-                                Name = (string)reader[8]
+                                Description = (string)reader[4],
+                                Price = (int)reader[5],
+                                ImgName = (string)reader[6],
+                                Name = (string)reader[7]
                             }
                         });
                     }

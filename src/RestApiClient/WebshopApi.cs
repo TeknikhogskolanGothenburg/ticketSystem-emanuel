@@ -23,17 +23,11 @@ namespace TicketSystem.RestApiClient
          
 
         // gets all the products from the requested catagory
-        public List<ClassLibrary.Product> GetProductsByCatId(string CategoryId)
+        public List<ClassLibrary.Product> GetProductsByCatId()
         {
             var client = new RestClient(localHost);
             var request = new RestRequest("api/values/{id}", Method.GET);
-            request.AddUrlSegment("id", CategoryId);
-            var response = client.Execute<List<ClassLibrary.Product>>(request);
-
-            if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
-            {
-                throw new KeyNotFoundException(string.Format("Ticket with ID: {0} is not found", CategoryId));
-            }
+            var response = client.Execute<List<ClassLibrary.Product>>(request);     
             return response.Data;
         }
 
