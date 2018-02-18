@@ -28,15 +28,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Update="wwwroot\images\eko.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Update="wwwroot\images\vanlig.jpg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Update="wwwroot\images\Vego.jpg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <Folder Include="wwwroot\images\cat1\" />
+    <Folder Include="wwwroot\images\cat2\" />
+    <Folder Include="wwwroot\images\cat3\" />
   </ItemGroup>
 
 </Project>
