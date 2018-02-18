@@ -81,7 +81,7 @@ namespace ClassLibrary
         public bool ValidateName(string name)
         {
             int i = 0;
-            i += Regex.Matches(name, @"[a-zA-Z ]").Count;
+            i += Regex.Matches(name, @"[a-zA-Z0-9 ]").Count;
 
             return i == name.Length && name != null && name != "";
         }
@@ -159,7 +159,7 @@ namespace ClassLibrary
         public bool validateImgName(string img)
         {
             int i = 0;
-            i += Regex.Matches(img, @"[a-zA-Z. ]").Count;
+            i += Regex.Matches(img, @"[a-zA-Z0-9\.]").Count;
 
             return i == img.Length && img != null && img != "";
         }

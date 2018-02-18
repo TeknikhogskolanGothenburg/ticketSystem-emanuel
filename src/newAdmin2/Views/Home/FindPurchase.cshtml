@@ -1,0 +1,41 @@
+﻿@model List<ClassLibrary.Order>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<h1>Find purchase</h1>
+
+@using (Html.BeginForm("FindPurchase", "Home"))
+{
+    @Html.ValidationSummary()
+
+
+    <fieldset>
+        <legend>Enter a name or a email to search on a oder</legend> <br />
+
+        <label for="fname">First Name:</label> <br />
+        <input type="text" id="fname" name="fname"> <br /><br />
+
+        <label for="lname">Last Name:</label><br />
+        <input type="text" id="fname" name="lname"> <br /><br />
+
+
+        <label for="mail">Email:</label><br />
+        <input type="email" id="mail" name="mail"><br /><br />
+
+        <input type="hidden" name="isSearchCall" value="true" />
+        <button type="submit">Search</button>
+    </fieldset>
+
+    @*if (Model.Count > 0)
+    {
+        @for (int i = 0; i < Model.Count; i++)
+        {
+
+
+        }
+
+    }*@
+
+}

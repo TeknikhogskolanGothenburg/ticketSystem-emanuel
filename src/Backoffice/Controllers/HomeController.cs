@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Admin.Models;
+using Backoffice.Models;
 using TicketSystem.RestApiClient;
 
 namespace Admin.Controllers
@@ -37,11 +37,11 @@ namespace Admin.Controllers
         {
 
            
-            
+            OderList result = new OderList();
 
             if (fname == null && lname == null && mail == null && isSearchCall == false)
             {
-            return View(); // Return the same view (blank ~/home/FindPurchase or a error promt) if no fields is given values, 
+            return View(result); // Return the same view (blank ~/home/FindPurchase or a error promt) if no fields is given values, 
             }
 
             if (Validator.ValidateName(fname)&&Validator.ValidateName(lname)&&Validator.ValidateEmail(mail))
