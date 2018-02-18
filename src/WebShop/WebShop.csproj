@@ -20,9 +20,6 @@
     <None Include="wwwroot\images\banner\banner2.svg" />
     <None Include="wwwroot\images\banner\banner3.svg" />
     <None Include="wwwroot\images\banner\banner4.svg" />
-    <None Include="wwwroot\images\cat1\Nike1.jpg" />
-    <None Include="wwwroot\images\cat2\Nike2.jpg" />
-    <None Include="wwwroot\images\cat3\Nike3.jpg" />
   </ItemGroup>
 
   <ItemGroup>
@@ -31,13 +28,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Update="wwwroot\images\cat1\Nike1.jpg">
+    <Content Update="wwwroot\images\eko.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Update="wwwroot\images\cat2\Nike2.jpg">
+    <Content Update="wwwroot\images\vanlig.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Update="wwwroot\images\cat3\Nike3.jpg">
+    <Content Update="wwwroot\images\Vego.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

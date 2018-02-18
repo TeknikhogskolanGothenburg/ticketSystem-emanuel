@@ -50,8 +50,9 @@ namespace WebshopApi.Controllers
         
         // POST: api/Backoffice
         [HttpPost]
-        public void Post([FromBody]string value)
+        public void Post([FromBody] ClassLibrary.Product product)
         {
+
         }
         
         // PUT: api/Backoffice/5

@@ -14,7 +14,7 @@ namespace Admin.Controllers
     {
         WebshopApi db = new WebshopApi();
         // använd rest API
-        public IActionResult AddProd(string ProdName, string CatagoryId, string Description, int Price, string imgName, bool IsAddProd)
+        public IActionResult AddProd(string ProdName, int CatagoryId, string Description, int Price, string imgName, bool IsAddProd)
         {
 
             
@@ -22,7 +22,8 @@ namespace Admin.Controllers
             {
                 return View(); // return error promt 
             }
-            
+
+            db.AddProduct(new ClassLibrary.Product {Name=ProdName, CatagoryId=CatagoryId, Description=Description,Price=Price, ImgName=imgName});
             return View(); // return promt "Prod added"
         }
                  

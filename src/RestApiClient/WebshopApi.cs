@@ -59,7 +59,14 @@ namespace TicketSystem.RestApiClient
 
             //Vad gör den här raden? - inget
         }
+        public void AddProduct(ClassLibrary.Product product)
+        {
+            var client = new RestClient(localHost);
+            var request = new RestRequest("api/Backoffice", Method.POST);
+            request.AddJsonBody(product);
+            client.Execute(request);
 
+        }
         
     }
 }
