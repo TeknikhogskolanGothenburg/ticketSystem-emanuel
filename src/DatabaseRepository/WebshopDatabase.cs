@@ -90,7 +90,7 @@ namespace TicketSystem.DatabaseRepository
 
                         items += "(" + order.cart[i].Product.Id + "," + WebOrderId.ToString() + "," + order.cart[i].Amount + "),";
                     }
-
+                    connection.Query<int>(joinProdOrder + items.Substring(0, items.Length - 1));
                 }
 
             }
