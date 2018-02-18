@@ -28,14 +28,26 @@
         <button type="submit">Search</button>
     </fieldset>
 
-    @*if (Model.Count > 0)
+    if (Model != null)
     {
         @for (int i = 0; i < Model.Count; i++)
         {
-
+            <div class="recipt">
+                <h1>Order ID: @Model[i].id</h1><br/>
+                <h3>First Name: @Model[i].person.FirstName</h3><br />
+                <h3>Last Name: @Model[i].person.LastName</h3><br />
+                <h3>Email: @Model[i].person.Email</h3><br />
+                <h3>Comment: @Model[i].delivery.CommentOnDelivery</h3><br />
+                <h3>DeliveryDate: @Model[i].delivery.DeliveryDate.ToShortDateString()</h3><br />
+                <h3>Products:</h3>
+                @for (int x = 0; x < Model[i].cart.Count; x++ )
+                { 
+                    <h3>@Model[i].cart[x].Amount :  @Model[i].cart[x].Product.Name - @Model[i].cart[x].Product.Price</h3>
+                }
+            </div>
 
         }
 
-    }*@
+    }
 
 }

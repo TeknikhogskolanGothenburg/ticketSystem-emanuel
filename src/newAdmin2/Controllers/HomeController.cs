@@ -43,7 +43,7 @@ namespace newAdmin2.Controllers
                 return View(); // Return the same view (blank ~/home/FindPurchase or a error promt) if no fields is given values, 
             }
 
-            if (Validator.ValidateName(fname) && Validator.ValidateName(lname) && Validator.ValidateEmail(mail))
+            if (fname == null || Validator.ValidateName(fname) && lname==null || Validator.ValidateName(lname) && mail==null || Validator.ValidateEmail(mail))
             {
                 List<ClassLibrary.Order> matchedOrders = db.GetMatchingOrders
                 (new ClassLibrary.SerchRequest { fName = fname, lName = lname, email = mail });

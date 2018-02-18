@@ -37,7 +37,7 @@ namespace WebshopApi.Controllers
 
 
             if (a[0] != "" && a[1] == "" && a[2] == "") { having += "FirstName = '" + a[0]+"' "; }
-            else if(a[0] !="") { having += "FirstName = ' " + a[0] + " ' AND "; }
+            else if(a[0] !="") { having += "FirstName = '" + a[0] + "' AND "; }
 
             if (a[1] != "" && a[2] == "") { having += "LastName = '" + a[1]+"'"; }
             else if(a[1] !=""){ having += "LastName = '" + a[1] + "' AND "; }
