@@ -8,10 +8,16 @@ using TicketSystem.DatabaseRepository;
 namespace WebshopApi.Controllers
 {
     [Route("api/[controller]")]
-    public class ShopController : Controller
+    public class ValuesController : Controller
     {
         TicketDatabase db = new TicketDatabase();
-        //GET api/value
+        //GET api/values
+        [HttpGet()]
+        public List<ClassLibrary.Order> Get(ClassLibrary.SerchRequest search)
+        {
+
+            return null;
+        }
 
        // GET api/values/5
        [HttpGet("{id}")]
@@ -28,5 +34,24 @@ namespace WebshopApi.Controllers
             db.AddOrder(order);
         }
 
+        [HttpPost()]
+        public void Posta([FromBody]string value)
+        {
+
+        }
+
+
+        // PUT api/values/5
+        [HttpPut("{id}")]
+        public void Put(int id, [FromBody]string value)
+        {
+
+        }
+
+        // DELETE api/values/5
+        [HttpDelete("{id}")]
+        public void Delete(int id)
+        {
+        }
     }
 }
