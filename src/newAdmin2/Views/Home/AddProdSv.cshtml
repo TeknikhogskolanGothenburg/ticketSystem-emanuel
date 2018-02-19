@@ -1,0 +1,39 @@
+﻿
+@{
+    ViewData["Title"] = "Contact";
+}
+
+<h1>
+    Lägg till produkt
+</h1>
+
+
+
+@using (Html.BeginForm("AddProd", "Home"))
+{
+    <fieldset>
+        <legend>Ett produktId kommer att bli genererat </legend> <br />
+
+
+        <label for="ProdName">Produktnamn</label><br />
+        <input type="text" id="ProdName" name="ProdName"> <br /> <br />
+
+        <label for="DescriptionSV">Beskrivning svenska</label><br />
+        <input type="text" id="Description" name="Description"> <br /><br />
+
+        <label for="DescriptionEN">Beskrivning engelska</label><br />
+        <input type="text" id="Description" name="Description"> <br /><br />
+
+        <label for="Price">Pris</label><br />
+        <input type="text" id="Price" name="Price"> <br /><br />
+
+        <label for="imgName">Bildnamn</label><br />
+        <input type="text" id="imgName" name="imgName"> <br /><br />
+
+        <input type="hidden" name="IsAddProd" value="true" />
+        <button type="submit">Lägg till produkt</button>
+
+    </fieldset>
+
+}
+

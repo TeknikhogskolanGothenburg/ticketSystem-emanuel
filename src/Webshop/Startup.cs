@@ -44,7 +44,7 @@ namespace Webshop
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Default}/{action=Home}/{id?}");
+                    template: "{controller=Products}/{action=Category}/{id?}");
             });
         }
     }

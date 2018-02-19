@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -12,8 +13,11 @@
     <header>
         <div id="navbar">
             <ul>
-                <li>@Html.ActionLink(linkText: "Add New Product", actionName: "AddProd", controllerName: "Home")</></li>
-                <li>@Html.ActionLink(linkText: "Find Order", actionName: "FindPurchase", controllerName: "Home")</></li>
+                <li>@Html.ActionLink(linkText: "Eng/sv", actionName: "EngSv", controllerName: "Home")</li>
+                    @if(EngSve.IsEng) {<li>@Html.ActionLink(linkText: "Add New Product", actionName: "AddProd", controllerName: "Home")</li> }
+                    @if(!EngSve.IsEng){<li>@Html.ActionLink(linkText: "Lägg till produkt", actionName: "AddProd", controllerName: "Home")</li> }
+                    @if(EngSve.IsEng){<li>@Html.ActionLink(linkText: "Find Order", actionName: "FindPurchase", controllerName: "Home")</li> }
+                    @if(!EngSve.IsEng){<li>@Html.ActionLink(linkText: "Hitta Order", actionName: "FindPurchase", controllerName: "Home")</li> }           
             </ul>
         </div>
     </header>
@@ -22,3 +26,4 @@
 
 </body>
 </html>
+

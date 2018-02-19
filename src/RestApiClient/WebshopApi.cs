@@ -12,18 +12,11 @@ namespace TicketSystem.RestApiClient
         string localHost = "http://localhost:50610/";
 
         // does nothing atm
-        public List<ClassLibrary.Product> GetProduct()
-        {
-            var client = new RestClient(localHost);
-            var request = new RestRequest("api/values", Method.GET);          
-            var response = client.Execute<List<ClassLibrary.Product>>(request);
-            List<ClassLibrary.Product> test = response.Data;
-            return test;
-        }
+    
          
 
         // gets all the products from the requested catagory
-        public List<ClassLibrary.Product> GetProductsByCatId()
+        public List<ClassLibrary.Product> GetProducts()
         {
             var client = new RestClient(localHost);
             var request = new RestRequest("api/values/{id}", Method.GET);

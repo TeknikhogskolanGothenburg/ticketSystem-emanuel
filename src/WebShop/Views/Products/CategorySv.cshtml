@@ -1,17 +1,17 @@
 ﻿@model List<ClassLibrary.Product>
 
 @{
-    ViewBag.Title = "Hej";
+    ViewBag.Title = "Affär";
 }
 
 
 <div class="product-container">
-    
+
     @foreach (var product in Model)
     {
         <div class="col">
 
-           <a href="~/../Default/Thanks"><div class="Prod_Img" style=" background-image: url(@product.ImgFilePath);"> </div></a>
+            <a href="~/../Default/Thanks"><div class="Prod_Img" style=" background-image: url(@product.ImgFilePath);"> </div></a>
             <div class="Prod_des">
                 <p>
                     @product.Price
@@ -23,7 +23,7 @@
                 @using (Html.BeginForm("AddProduct", "Products"))
                 {
                     <label>Amount</label>
-                    <input type="hidden" name="url" value="@Url.RouteUrl(ViewContext.RouteData.Values)"/>
+                    <input type="hidden" name="url" value="@Url.RouteUrl(ViewContext.RouteData.Values)" />
                     <input type="number" name="Amount" style="width:60px;" />
                     <input type="hidden" name="Id" value="@product.Id" />
                     <input type="hidden" name="CatagoryId" value="@product.CatagoryId" />
@@ -32,7 +32,7 @@
                     <input type="hidden" name="Price" value="@product.Price" />
                     <input type="hidden" name="ImgName" value="@product.ImgName" />
 
-                    <input type="submit" value="Add" style="width:50px;" />
+                    <input type="submit" value="Köp" style="width:50px;" />
                 }
             </div>
         </div>

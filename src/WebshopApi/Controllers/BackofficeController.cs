@@ -13,12 +13,7 @@ namespace WebshopApi.Controllers
     public class BackofficeController : Controller
     {
         TicketDatabase db = new TicketDatabase();
-        // GET: api/Backoffice
-        [HttpGet]
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
+        // GET: api/Backoffic
 
         // GET: api/Backoffice/5
         [HttpGet("{search}")]
@@ -56,16 +51,6 @@ namespace WebshopApi.Controllers
 
         }
         
-        // PUT: api/Backoffice/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-        
-        // DELETE: api/ApiWithActions/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
+
     }
 }
