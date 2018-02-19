@@ -43,7 +43,7 @@ namespace newAdmin2
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=AddProd}/{id?}");
+                    template: "{controller=Home}/{action=AddProdEN}/{id?}");
             });
         }
     }

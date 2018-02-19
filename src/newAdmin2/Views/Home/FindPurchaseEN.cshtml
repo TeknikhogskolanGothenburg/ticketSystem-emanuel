@@ -1,0 +1,55 @@
+﻿@model List<ClassLibrary.Order>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<h1>Find purchase</h1>
+
+@using (Html.BeginForm("FindPurchaseEN", "Home"))
+{
+    @Html.ValidationSummary()
+
+
+    <fieldset>
+        <legend>Enter a name or a email to search on a oder</legend> <br />
+
+        <label for="fname">First Name:</label> <br />
+        <input type="text" id="fname" name="fname"> <br /><br />
+
+        <label for="lname">Last Name:</label><br />
+        <input type="text" id="fname" name="lname"> <br /><br />
+
+
+        <label for="mail">Email:</label><br />
+        <input type="email" id="mail" name="mail"><br /><br />
+
+        <input type="hidden" name="isSearchCall" value="true" />
+        <button type="submit">Search</button>
+    </fieldset>
+
+    if (Model != null)
+    {
+        @for (int i = 0; i < Model.Count; i++)
+        {
+            <div class="recipt">
+                <h1>Order ID: @Model[i].id</h1><br/>
+                <h3>First Name: @Model[i].person.FirstName</h3><br />
+                <h3>Last Name: @Model[i].person.LastName</h3><br />
+                <h3>Email: @Model[i].person.Email</h3><br />
+                <h3>Comment: @Model[i].delivery.CommentOnDelivery</h3><br />
+                <h3>DeliveryDate: @Model[i].delivery.DeliveryDate.ToShortDateString()</h3><br />
+                <h3>Products:</h3>
+                @{int total = 0;}
+                @for (int x = 0; x < Model[i].cart.Count; x++)
+                {
+                    <h3>@Model[i].cart[x].Amount :  @Model[i].cart[x].Product.Name - @Model[i].cart[x].Product.Price</h3>
+                        total += Model[i].cart[x].Amount;
+                }
+            </div>
+
+        }
+
+    }
+
+}

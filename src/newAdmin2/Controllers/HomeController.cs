@@ -13,14 +13,24 @@ namespace newAdmin2.Controllers
     {
         WebshopApi db = new WebshopApi();
         ClassLibrary.Validator Validator = new ClassLibrary.Validator();
+
+        public IActionResult EngSv()
+        {
+            if (EngSve.IsEng==true) { EngSve.IsEng = false; return View("AddProdSv"); }
+            else { EngSve.IsEng = true;  return View("AddProdEN"); }
+            
+        }
+
+
         // använd rest API
-        public IActionResult AddProd(string ProdName, string Description, int Price, string imgName, bool IsAddProd)
+        public IActionResult AddProdEN(string ProdName, string Description, int Price, string imgName, bool IsAddProd)
         {
 
 
             if (Description == null || Price == 1 || imgName == null && IsAddProd == true)
             {
-                return View(); // return error promt 
+                if (EngSve.IsEng == false) { return View("AddProdSv"); }
+                else { return View("AddProdEN"); }
             }
 
             if (Validator.ValidateName(ProdName) && Validator.ValidateDes(Description) && Validator.ValidatePrice(Price) && Validator.validateImgName(imgName))
@@ -28,31 +38,35 @@ namespace newAdmin2.Controllers
                 db.AddProduct(new ClassLibrary.Product { Name = ProdName, Description = Description, Price = Price, ImgName = imgName });
             }
 
-            return View(); // return promt "Prod added"
+            if (EngSve.IsEng == false) { return View("AddProdSv"); }
+            else { return View("AddProdEN"); }
         }
 
 
-        public IActionResult FindPurchase(string fname, string lname, string mail, bool isSearchCall)
+
+
+
+        public IActionResult FindPurchaseEN(string fname, string lname, string mail, bool isSearchCall)
         {
-
-
-
 
             if (fname == null && lname == null && mail == null && isSearchCall == false)
             {
-                return View(); // Return the same view (blank ~/home/FindPurchase or a error promt) if no fields is given values, 
+                if (EngSve.IsEng == false) { return View("FindPurchaseSv"); }
+                else { return View("FindPurchaseEN"); }
             }
 
             if (fname == null || Validator.ValidateName(fname) && lname==null || Validator.ValidateName(lname) && mail==null || Validator.ValidateEmail(mail))
             {
                 List<ClassLibrary.Order> matchedOrders = db.GetMatchingOrders
                 (new ClassLibrary.SerchRequest { fName = fname, lName = lname, email = mail });
-                return View(matchedOrders);
+                if (EngSve.IsEng == false) { return View("FindPurchaseSv", matchedOrders); }
+                else { return View("FindPurchaseEN", matchedOrders); }
             }
 
             else
             {
-                return View();
+                if (EngSve.IsEng == false) { return View("FindPurchaseSv"); }
+                else { return View("FindPurchaseEN"); }
             }
             //should return the orders that matches the search result
         }
