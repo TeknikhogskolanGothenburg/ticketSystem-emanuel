@@ -23,7 +23,7 @@ namespace newAdmin2.Controllers
 
 
         // använd rest API
-        public IActionResult AddProdEN(string ProdName, string Description, int Price, string imgName, bool IsAddProd)
+        public IActionResult AddProd(string ProdName, string Description, int Price, string imgName, bool IsAddProd)
         {
 
 
@@ -46,7 +46,7 @@ namespace newAdmin2.Controllers
 
 
 
-        public IActionResult FindPurchaseEN(string fname, string lname, string mail, bool isSearchCall)
+        public IActionResult FindPurchase(string fname, string lname, string mail, bool isSearchCall)
         {
 
             if (fname == null && lname == null && mail == null && isSearchCall == false)

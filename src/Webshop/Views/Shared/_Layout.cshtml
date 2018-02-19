@@ -18,9 +18,12 @@
 
         <div id="navbar">
             <ul>
-                <li class="Home-btn">@Html.ActionLink(linkText: "Home", actionName: "Home", controllerName: "Default")</></li>
-                <li>@Html.ActionLink(linkText: "Shop", actionName: "Category", controllerName: "Products")</></li>               
-                <li style="background-color:chartreuse">@Html.ActionLink(linkText: "Order", actionName: "Order_Pay", controllerName: "Products")</></li>
+                <li class="Home-btn">@Html.ActionLink(linkText: "Eng/Sv", actionName: "EnSv", controllerName: "Products")</></li>
+                @if (EngSv.IsEng){<li>@Html.ActionLink(linkText: "Shop", actionName: "Category", controllerName: "Products")</li> }
+                @if (!EngSv.IsEng){<li>@Html.ActionLink(linkText: "Handla", actionName: "Category", controllerName: "Products")</li> } 
+                @if (EngSv.IsEng){<li>@Html.ActionLink(linkText: "Order", actionName: "Order_Pay", controllerName: "Products")</li>}
+                @if (!EngSv.IsEng){<li>@Html.ActionLink(linkText: "Beställ", actionName: "Order_Pay", controllerName: "Products")</li>}
+
             </ul>
         </div>
     </header>
@@ -32,22 +35,22 @@
                 <div class="Footer">
 
                     <div class="column-left">
-                        <p><a class="footerlink" href="~/Views/Home/About.cshtml">left</a></p>
-                        <p><a class="footerlink" href="~/Views/Home/About.cshtml">Betalningsalternativ</a></p>
-                        <p><a class="footerlink" href="~/Views/Home/About.cshtml">Reklamationer</a></p>
+                        <p><a class="footerlink" href="~/../Home/About">left</a></p>
+                        <p><a class="footerlink" href="~/../Home/About">Betalningsalternativ</a></p>
+                        <p><a class="footerlink" href="~/../Home/About">Reklamationer</a></p>
                     </div>
 
 
                     <div class="column-center">
-                        <p><a class="footerlink" href="~/Views/Home/About.cshtml">mid</a></p>
-                        <p><a class="footerlink" href="~/Views/Home/About.cshtml">Betalningsalternativ</a></p>
-                        <p><a class="footerlink" href="~/Views/Home/About.cshtml">Reklamationer</a></p>
+                        <p><a class="footerlink" href="~/../Home/About">mid</a></p>
+                        <p><a class="footerlink" href="~/../Home/About">Betalningsalternativ</a></p>
+                        <p><a class="footerlink" href="~/../Home/About">Reklamationer</a></p>
                     </div>
 
                     <div class="column-right">
-                        <p><a class="footerlink" href="~/Views/Home/About.cshtml">right</a></p>
-                        <p><a class="footerlink" href="~/Views/Home/About.cshtml">Betalningsalternativ</a></p>
-                        <p><a class="footerlink" href="~/Views/Home/About.cshtml">Reklamationer</a></p>
+                        <p><a class="footerlink" href="~/../Home/About">right</a></p>
+                        <p><a class="footerlink" href="~/../Home/About">Betalningsalternativ</a></p>
+                        <p><a class="footerlink" href="~/../Home/About">Reklamationer</a></p>
                     </div>
 
                 </div>

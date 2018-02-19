@@ -3,5 +3,6 @@
     ViewData["Title"] = "Thanks";
 }
 
-<h2>Thanks</h2>
+@if(EngSv.IsEng){<h1>Thanks for buying</h1> }
+@if (!EngSv.IsEng) {<h1>Tack för köpet</h1> }
 
