@@ -9,7 +9,7 @@ namespace TicketSystem.RestApiClient
     public class WebshopApi : IWebshopApi
     {
         // Implemented using RestSharp: http://restsharp.org/
-        string localHost = "http://localhost:58252/";
+        string localHost = "http://localhost:50610/";
 
         // does nothing atm
         public List<ClassLibrary.Product> GetProduct()
