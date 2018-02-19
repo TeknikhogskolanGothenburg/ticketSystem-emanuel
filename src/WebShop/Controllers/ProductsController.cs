@@ -16,14 +16,14 @@ namespace Webshop.Controllers
 
         public IActionResult EnSv()
         {
-            if (EngSv.IsEng == false) { EngSv.IsEng = true; return View("CategoryEn", db.GetProductsByCatId()); }
-            else {EngSv.IsEng = false; return View("CategorySv", db.GetProductsByCatId()); }
+            if (EngSv.IsEng == false) { EngSv.IsEng = true; return View("CategoryEn", db.GetProducts()); }
+            else {EngSv.IsEng = false; return View("CategorySv", db.GetProducts()); }
         }
 
         public IActionResult Category()
         {
-            if (EngSv.IsEng == true) {return View("CategoryEn", db.GetProductsByCatId()); }
-            else {return View("CategorySv", db.GetProductsByCatId()); }
+            if (EngSv.IsEng == true) {return View("CategoryEn", db.GetProducts()); }
+            else {return View("CategorySv", db.GetProducts()); }
 
         }
         public IActionResult AddProduct(ClassLibrary.Product prod, int? Amount, string url)
