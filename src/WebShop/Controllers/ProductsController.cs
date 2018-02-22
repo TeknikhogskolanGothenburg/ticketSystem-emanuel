@@ -13,10 +13,17 @@ namespace Webshop.Controllers
     {
         WebshopApi db = new WebshopApi();
         ClassLibrary.Validator val = new ClassLibrary.Validator();
+
+        public IActionResult EnSv()
+        {
+            if (EngSv.IsEng == false) { EngSv.IsEng = true; return View("CategoryEn", db.GetProductsByCatId()); }
+            else {EngSv.IsEng = false; return View("CategorySv", db.GetProductsByCatId()); }
+        }
+
         public IActionResult Category()
         {
-
-            return View(db.GetProductsByCatId());
+            if (EngSv.IsEng == true) {return View("CategoryEn", db.GetProductsByCatId()); }
+            else {return View("CategorySv", db.GetProductsByCatId()); }
 
         }
         public IActionResult AddProduct(ClassLibrary.Product prod, int? Amount, string url)
@@ -27,9 +34,11 @@ namespace Webshop.Controllers
             }
             return Redirect(url);
         }
+
         public IActionResult Order_Pay()
         {
-            return View();
+            if (EngSv.IsEng == true) { return View("Order_PayEn"); }
+            else { return View("Order_PaySv"); }
         }
 
         public IActionResult Thanks(ClassLibrary.Delivery delivery, ClassLibrary.Person person, ClassLibrary.CardInfo card)
@@ -50,6 +59,10 @@ namespace Webshop.Controllers
             {
                 return View();
             }
+        }
+        public IActionResult AboutProd()
+        {
+            return View();
         }
 
     }
